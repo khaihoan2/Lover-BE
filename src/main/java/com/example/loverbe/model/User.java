@@ -4,6 +4,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -59,4 +61,9 @@ public class User {
     private Integer rentedCounter;
 
     private String status;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Role> roles;
+
+
 }
