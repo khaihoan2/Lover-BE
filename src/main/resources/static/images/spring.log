@@ -1,0 +1,85 @@
+2021-11-30 13:42:00.310  INFO 18932 --- [main] com.example.loverbe.LoverBeApplication   : Starting LoverBeApplication using Java 1.8.0_311 on CHINHPC with PID 18932 (D:\OneDrive\Chinhpc\CODEGYM\Module6\Lover-BE\build\classes\java\main started by jacks in D:\OneDrive\Chinhpc\CODEGYM\Module6\Lover-BE)
+2021-11-30 13:42:00.315  INFO 18932 --- [main] com.example.loverbe.LoverBeApplication   : No active profile set, falling back to default profiles: default
+2021-11-30 13:42:01.950  INFO 18932 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-30 13:42:02.097  INFO 18932 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 127 ms. Found 7 JPA repository interfaces.
+2021-11-30 13:42:03.092  INFO 18932 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-30 13:42:03.108  INFO 18932 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-30 13:42:03.109  INFO 18932 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-11-30 13:42:03.246  INFO 18932 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-30 13:42:03.247  INFO 18932 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2859 ms
+2021-11-30 13:42:03.754  INFO 18932 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-11-30 13:42:04.982  INFO 18932 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-11-30 13:42:05.064  INFO 18932 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-30 13:42:05.180  INFO 18932 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.1.Final
+2021-11-30 13:42:05.534  INFO 18932 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-11-30 13:42:05.782  INFO 18932 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-11-30 13:42:07.321 DEBUG 18932 --- [main] org.hibernate.SQL                        : 
+    
+    create table service (
+       id bigint not null auto_increment,
+        description varchar(255),
+        name varchar(255),
+        primary key (id)
+    ) engine=MyISAM
+2021-11-30 13:42:07.376 DEBUG 18932 --- [main] org.hibernate.SQL                        : 
+    
+    alter table feedback 
+       add constraint FKsjmfrqsfqj98f23ddsbnf4jhy 
+       foreign key (reservation_id) 
+       references reservation (id)
+2021-11-30 13:42:07.426 DEBUG 18932 --- [main] org.hibernate.SQL                        : 
+    
+    alter table image 
+       add constraint FKlxnnh0ir05khn8iu9tgwh1yyk 
+       foreign key (user_id) 
+       references user (id)
+2021-11-30 13:42:07.469 DEBUG 18932 --- [main] org.hibernate.SQL                        : 
+    
+    alter table reservation 
+       add constraint FKrsa3l3fyhlyug3fjmlmgmxxxy 
+       foreign key (rentee_id) 
+       references user (id)
+2021-11-30 13:42:07.503 DEBUG 18932 --- [main] org.hibernate.SQL                        : 
+    
+    alter table reservation 
+       add constraint FKi9tradpy7l2dyg4j52f8dbn3n 
+       foreign key (renter_id) 
+       references user (id)
+2021-11-30 13:42:07.559 DEBUG 18932 --- [main] org.hibernate.SQL                        : 
+    
+    alter table user 
+       add constraint FK29eqyw0gxw5r4f1ommy11nd9i 
+       foreign key (city_id) 
+       references city (id)
+2021-11-30 13:42:07.604 DEBUG 18932 --- [main] org.hibernate.SQL                        : 
+    
+    alter table user 
+       add constraint FKplagps7tcqdonj31pad31fwr2 
+       foreign key (nationality_id) 
+       references nationality (id)
+2021-11-30 13:42:07.656 DEBUG 18932 --- [main] org.hibernate.SQL                        : 
+    
+    alter table user_role 
+       add constraint FKa68196081fvovjhkek5m97n3y 
+       foreign key (role_id) 
+       references role (id)
+2021-11-30 13:42:07.684 DEBUG 18932 --- [main] org.hibernate.SQL                        : 
+    
+    alter table user_role 
+       add constraint FK859n2jvi8ivhui0rl0esws6o 
+       foreign key (user_id) 
+       references user (id)
+2021-11-30 13:42:07.708  INFO 18932 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-30 13:42:07.729  INFO 18932 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 13:42:08.388  WARN 18932 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-30 13:42:09.391  INFO 18932 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 19943c77-760a-462c-8ded-a54d5a869ce7
+
+2021-11-30 13:42:09.639  INFO 18932 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2021-11-30 13:42:09.663  INFO 18932 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7e5c8c80, org.springframework.security.web.context.SecurityContextPersistenceFilter@8aafd70, org.springframework.security.web.header.HeaderWriterFilter@2fca9fae, org.springframework.web.filter.CorsFilter@46df794e, org.springframework.security.web.csrf.CsrfFilter@5df7ae0a, org.springframework.security.web.authentication.logout.LogoutFilter@6c167296, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@574e4184, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@237bdbcb, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@5cd6a827, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1ec09a68, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7ca0b05e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3e5ed0d4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6cd65042, org.springframework.security.web.session.SessionManagementFilter@54d2887a, org.springframework.security.web.access.ExceptionTranslationFilter@1c41931a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4c678a1f]
+2021-11-30 13:42:09.830  INFO 18932 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-11-30 13:42:09.849  INFO 18932 --- [main] com.example.loverbe.LoverBeApplication   : Started LoverBeApplication in 10.394 seconds (JVM running for 15.696)
+2021-11-30 13:42:10.830  INFO 18932 --- [RMI TCP Connection(1)-192.168.2.106] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-30 13:42:10.830  INFO 18932 --- [RMI TCP Connection(1)-192.168.2.106] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-11-30 13:42:10.833  INFO 18932 --- [RMI TCP Connection(1)-192.168.2.106] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
