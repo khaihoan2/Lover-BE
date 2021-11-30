@@ -1,0 +1,166 @@
+2021-11-30 13:55:36.920  INFO 14756 --- [main] com.example.loverbe.LoverBeApplication   : Starting LoverBeApplication using Java 1.8.0_291 on DESKTOP-45P13V1 with PID 14756 (C:\Users\Admin\Desktop\modul 6\build\classes\java\main started by Admin in C:\Users\Admin\Desktop\modul 6)
+2021-11-30 13:55:36.926  INFO 14756 --- [main] com.example.loverbe.LoverBeApplication   : No active profile set, falling back to default profiles: default
+2021-11-30 13:55:39.156  INFO 14756 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-30 13:55:39.310  INFO 14756 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 132 ms. Found 6 JPA repository interfaces.
+2021-11-30 13:55:40.343  INFO 14756 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-30 13:55:40.359  INFO 14756 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-30 13:55:40.360  INFO 14756 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-11-30 13:55:40.517  INFO 14756 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-30 13:55:40.518  INFO 14756 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3495 ms
+2021-11-30 13:55:41.057  INFO 14756 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-11-30 13:55:41.918  INFO 14756 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-11-30 13:55:42.008  INFO 14756 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-30 13:55:42.159  INFO 14756 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.1.Final
+2021-11-30 13:55:42.601  INFO 14756 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-11-30 13:55:42.848  INFO 14756 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-11-30 13:55:44.528 DEBUG 14756 --- [main] org.hibernate.SQL                        : 
+    
+    create table city (
+       id bigint not null auto_increment,
+        name varchar(255),
+        primary key (id)
+    ) engine=MyISAM
+2021-11-30 13:55:44.607 DEBUG 14756 --- [main] org.hibernate.SQL                        : 
+    
+    create table feedback (
+       id bigint not null auto_increment,
+        content varchar(255),
+        rating integer not null,
+        sent_at date,
+        reservation_id bigint,
+        primary key (id)
+    ) engine=MyISAM
+2021-11-30 13:55:44.623 DEBUG 14756 --- [main] org.hibernate.SQL                        : 
+    
+    create table image (
+       id bigint not null auto_increment,
+        name varchar(255),
+        user_id bigint,
+        primary key (id)
+    ) engine=MyISAM
+2021-11-30 13:55:44.654 DEBUG 14756 --- [main] org.hibernate.SQL                        : 
+    
+    create table nationality (
+       id bigint not null auto_increment,
+        name varchar(255),
+        primary key (id)
+    ) engine=MyISAM
+2021-11-30 13:55:44.665 DEBUG 14756 --- [main] org.hibernate.SQL                        : 
+    
+    create table reservation (
+       id bigint not null auto_increment,
+        end_at date,
+        location varchar(255),
+        meeting_date date,
+        reserve_at date,
+        start_from date,
+        status bit,
+        rentee_id bigint,
+        renter_id bigint,
+        primary key (id)
+    ) engine=MyISAM
+2021-11-30 13:55:44.678 DEBUG 14756 --- [main] org.hibernate.SQL                        : 
+    
+    create table role (
+       id bigint not null auto_increment,
+        name varchar(255),
+        primary key (id)
+    ) engine=MyISAM
+2021-11-30 13:55:44.691 DEBUG 14756 --- [main] org.hibernate.SQL                        : 
+    
+    create table user (
+       id bigint not null auto_increment,
+        avatar varchar(255),
+        bust double precision not null,
+        description varchar(255),
+        email varchar(255),
+        facebook_url varchar(255),
+        first_name varchar(255),
+        gender varchar(255),
+        height double precision not null,
+        hips double precision not null,
+        joined_at date,
+        last_login_at date,
+        last_name varchar(255),
+        password varchar(255),
+        phone varchar(255),
+        rented_counter integer not null,
+        status varchar(255),
+        username varchar(255),
+        view_counter integer not null,
+        waist double precision not null,
+        weight double precision not null,
+        year_of_birth bigint,
+        city_id bigint,
+        nationality_id bigint,
+        primary key (id)
+    ) engine=MyISAM
+2021-11-30 13:55:44.717 DEBUG 14756 --- [main] org.hibernate.SQL                        : 
+    
+    create table user_role (
+       user_id bigint not null,
+        role_id bigint not null,
+        primary key (user_id, role_id)
+    ) engine=MyISAM
+2021-11-30 13:55:44.729 DEBUG 14756 --- [main] org.hibernate.SQL                        : 
+    
+    alter table feedback 
+       add constraint FKsjmfrqsfqj98f23ddsbnf4jhy 
+       foreign key (reservation_id) 
+       references reservation (id)
+2021-11-30 13:55:44.813 DEBUG 14756 --- [main] org.hibernate.SQL                        : 
+    
+    alter table image 
+       add constraint FKlxnnh0ir05khn8iu9tgwh1yyk 
+       foreign key (user_id) 
+       references user (id)
+2021-11-30 13:55:44.862 DEBUG 14756 --- [main] org.hibernate.SQL                        : 
+    
+    alter table reservation 
+       add constraint FKrsa3l3fyhlyug3fjmlmgmxxxy 
+       foreign key (rentee_id) 
+       references user (id)
+2021-11-30 13:55:44.906 DEBUG 14756 --- [main] org.hibernate.SQL                        : 
+    
+    alter table reservation 
+       add constraint FKi9tradpy7l2dyg4j52f8dbn3n 
+       foreign key (renter_id) 
+       references user (id)
+2021-11-30 13:55:44.949 DEBUG 14756 --- [main] org.hibernate.SQL                        : 
+    
+    alter table user 
+       add constraint FK29eqyw0gxw5r4f1ommy11nd9i 
+       foreign key (city_id) 
+       references city (id)
+2021-11-30 13:55:45.010 DEBUG 14756 --- [main] org.hibernate.SQL                        : 
+    
+    alter table user 
+       add constraint FKplagps7tcqdonj31pad31fwr2 
+       foreign key (nationality_id) 
+       references nationality (id)
+2021-11-30 13:55:45.065 DEBUG 14756 --- [main] org.hibernate.SQL                        : 
+    
+    alter table user_role 
+       add constraint FKa68196081fvovjhkek5m97n3y 
+       foreign key (role_id) 
+       references role (id)
+2021-11-30 13:55:45.104 DEBUG 14756 --- [main] org.hibernate.SQL                        : 
+    
+    alter table user_role 
+       add constraint FK859n2jvi8ivhui0rl0esws6o 
+       foreign key (user_id) 
+       references user (id)
+2021-11-30 13:55:45.144  INFO 14756 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-30 13:55:45.165  INFO 14756 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 13:55:45.996  WARN 14756 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-30 13:55:47.066  INFO 14756 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 0846d18d-b2ca-48e0-ab15-1751ee2b57b4
+
+2021-11-30 13:55:47.330  INFO 14756 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2021-11-30 13:55:47.356  INFO 14756 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@65d23aa3, org.springframework.security.web.context.SecurityContextPersistenceFilter@5cfa2ac5, org.springframework.security.web.header.HeaderWriterFilter@686e7513, org.springframework.web.filter.CorsFilter@52eca410, org.springframework.security.web.csrf.CsrfFilter@68f9e807, org.springframework.security.web.authentication.logout.LogoutFilter@69bca406, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4331be30, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@3b25709e, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@63d0e8d, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6a9df5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@413eaf5d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@33891646, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@69a76b74, org.springframework.security.web.session.SessionManagementFilter@c1a74d, org.springframework.security.web.access.ExceptionTranslationFilter@69c1ea07, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5dd3727c]
+2021-11-30 13:55:47.517  INFO 14756 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-11-30 13:55:47.548  INFO 14756 --- [main] com.example.loverbe.LoverBeApplication   : Started LoverBeApplication in 11.669 seconds (JVM running for 13.473)
+2021-11-30 13:55:48.156  INFO 14756 --- [RMI TCP Connection(1)-192.168.2.158] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-30 13:55:48.157  INFO 14756 --- [RMI TCP Connection(1)-192.168.2.158] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-11-30 13:55:48.159  INFO 14756 --- [RMI TCP Connection(1)-192.168.2.158] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
