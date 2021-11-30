@@ -37,4 +37,4 @@ out/
 .vscode/
 
 ### SQL ###
-sql.txt
+/sql.txt
