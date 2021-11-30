@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/api/images")
+@CrossOrigin("*")
 public class ImageRestController {
     @Autowired
     private IImageService imageService;
