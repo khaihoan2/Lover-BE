@@ -2,11 +2,10 @@ package com.example.loverbe.controller;
 
 
 import com.example.loverbe.model.Image;
-import com.example.loverbe.service.IImageService;
+import com.example.loverbe.service.image.IImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

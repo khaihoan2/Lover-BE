@@ -1,4 +1,4 @@
-package com.example.loverbe.service;
+package com.example.loverbe.service.image;
 
 import com.example.loverbe.model.Image;
 import com.example.loverbe.repository.IImageRepository;
