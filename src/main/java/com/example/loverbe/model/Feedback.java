@@ -14,7 +14,7 @@ public class Feedback {
     @OneToOne
     private Reservation reservation;
 
-    private String rating;
+    private int rating;
 
     private String content;
 
