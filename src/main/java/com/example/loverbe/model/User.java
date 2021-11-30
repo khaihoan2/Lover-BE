@@ -32,15 +32,15 @@ public class User {
     @ManyToOne
     private Nationality nationality;
 
-    private double height;
+    private Double height;
 
-    private double weight;
+    private Double weight;
 
-    private double bust;
+    private Double bust;
 
-    private double waist;
+    private Double waist;
 
-    private double hips;
+    private Double hips;
 
     private String description;
 
@@ -54,9 +54,9 @@ public class User {
 
     private String password;
 
-    private int viewCounter;
+    private Integer viewCounter;
 
-    private int rentedCounter;
+    private Integer rentedCounter;
 
     private String status;
 }

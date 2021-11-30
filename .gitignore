@@ -38,3 +38,5 @@ out/
 
 ### SQL ###
 /sql.txt
+
+!**/src/main/resources/application.properties/
