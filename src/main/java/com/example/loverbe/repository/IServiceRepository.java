@@ -1,11 +1,9 @@
 package com.example.loverbe.repository;
 
-import com.example.loverbe.model.User;
+import com.example.loverbe.model.Service;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IUserRepository extends JpaRepository<User, Long> {
-
-    User findByUsername(String username);
+public interface IServiceRepository extends JpaRepository<Service, Long> {
 }
