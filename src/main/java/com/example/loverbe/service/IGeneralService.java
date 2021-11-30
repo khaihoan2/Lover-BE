@@ -12,3 +12,4 @@ public interface IGeneralService<T> {
 
     Optional<T> findById(Long id);
 }
+
