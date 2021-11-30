@@ -1,0 +1,301 @@
+2021-11-30 13:41:13.236  INFO 5716 --- [main] com.example.loverbe.LoverBeApplication   : Starting LoverBeApplication using Java 1.8.0_201 on DESKTOP-9O0CNNQ with PID 5716 (E:\Spring\Lover-BE\build\classes\java\main started by Laptop88 in E:\Spring\Lover-BE)
+2021-11-30 13:41:13.241  INFO 5716 --- [main] com.example.loverbe.LoverBeApplication   : No active profile set, falling back to default profiles: default
+2021-11-30 13:41:14.609  INFO 5716 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-30 13:41:14.689  INFO 5716 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69 ms. Found 6 JPA repository interfaces.
+2021-11-30 13:41:15.235  INFO 5716 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-30 13:41:15.259  INFO 5716 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-30 13:41:15.259  INFO 5716 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-11-30 13:41:15.349  INFO 5716 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-30 13:41:15.350  INFO 5716 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2051 ms
+2021-11-30 13:41:15.559  WARN 5716 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine suitable jdbc url
+2021-11-30 13:41:15.563  INFO 5716 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2021-11-30 13:41:15.658  INFO 5716 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-11-30 13:41:15.676 ERROR 5716 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine suitable jdbc url
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+2021-11-30 13:43:23.800  INFO 18016 --- [main] com.example.loverbe.LoverBeApplication   : Starting LoverBeApplication using Java 1.8.0_201 on DESKTOP-9O0CNNQ with PID 18016 (E:\Spring\Lover-BE\build\classes\java\main started by Laptop88 in E:\Spring\Lover-BE)
+2021-11-30 13:43:23.804  INFO 18016 --- [main] com.example.loverbe.LoverBeApplication   : No active profile set, falling back to default profiles: default
+2021-11-30 13:43:24.815  INFO 18016 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-30 13:43:24.893  INFO 18016 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 6 JPA repository interfaces.
+2021-11-30 13:43:25.399  INFO 18016 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-30 13:43:25.408  INFO 18016 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-30 13:43:25.408  INFO 18016 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-11-30 13:43:25.525  INFO 18016 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-30 13:43:25.525  INFO 18016 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1662 ms
+2021-11-30 13:43:25.789  WARN 18016 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine suitable jdbc url
+2021-11-30 13:43:25.792  INFO 18016 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2021-11-30 13:43:25.809  INFO 18016 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-11-30 13:43:25.828 ERROR 18016 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine suitable jdbc url
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+2021-11-30 13:44:33.282  INFO 19496 --- [main] com.example.loverbe.LoverBeApplication   : Starting LoverBeApplication using Java 1.8.0_201 on DESKTOP-9O0CNNQ with PID 19496 (E:\Spring\Lover-BE\build\classes\java\main started by Laptop88 in E:\Spring\Lover-BE)
+2021-11-30 13:44:33.285  INFO 19496 --- [main] com.example.loverbe.LoverBeApplication   : No active profile set, falling back to default profiles: default
+2021-11-30 13:44:34.271  INFO 19496 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-30 13:44:34.352  INFO 19496 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69 ms. Found 6 JPA repository interfaces.
+2021-11-30 13:44:34.903  INFO 19496 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-30 13:44:34.912  INFO 19496 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-30 13:44:34.913  INFO 19496 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-11-30 13:44:35.035  INFO 19496 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-30 13:44:35.036  INFO 19496 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1707 ms
+2021-11-30 13:44:35.319  WARN 19496 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine suitable jdbc url
+2021-11-30 13:44:35.322  INFO 19496 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2021-11-30 13:44:35.341  INFO 19496 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-11-30 13:44:35.359 ERROR 19496 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine suitable jdbc url
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+2021-11-30 13:45:11.932  INFO 2060 --- [main] com.example.loverbe.LoverBeApplication   : Starting LoverBeApplication using Java 1.8.0_201 on DESKTOP-9O0CNNQ with PID 2060 (E:\Spring\Lover-BE\build\classes\java\main started by Laptop88 in E:\Spring\Lover-BE)
+2021-11-30 13:45:11.936  INFO 2060 --- [main] com.example.loverbe.LoverBeApplication   : No active profile set, falling back to default profiles: default
+2021-11-30 13:45:12.924  INFO 2060 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-30 13:45:13.003  INFO 2060 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 6 JPA repository interfaces.
+2021-11-30 13:45:13.533  INFO 2060 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-30 13:45:13.541  INFO 2060 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-30 13:45:13.542  INFO 2060 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-11-30 13:45:13.660  INFO 2060 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-30 13:45:13.660  INFO 2060 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1681 ms
+2021-11-30 13:45:13.908  WARN 2060 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine suitable jdbc url
+2021-11-30 13:45:13.912  INFO 2060 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2021-11-30 13:45:13.929  INFO 2060 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-11-30 13:45:13.945 ERROR 2060 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine suitable jdbc url
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+2021-11-30 13:47:20.866  INFO 11020 --- [main] com.example.loverbe.LoverBeApplication   : Starting LoverBeApplication using Java 1.8.0_201 on DESKTOP-9O0CNNQ with PID 11020 (E:\Spring\Lover-BE\build\classes\java\main started by Laptop88 in E:\Spring\Lover-BE)
+2021-11-30 13:47:20.869  INFO 11020 --- [main] com.example.loverbe.LoverBeApplication   : No active profile set, falling back to default profiles: default
+2021-11-30 13:47:21.812  INFO 11020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-30 13:47:21.884  INFO 11020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 6 JPA repository interfaces.
+2021-11-30 13:47:22.393  INFO 11020 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-30 13:47:22.401  INFO 11020 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-30 13:47:22.402  INFO 11020 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-11-30 13:47:22.505  INFO 11020 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-30 13:47:22.505  INFO 11020 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1585 ms
+2021-11-30 13:47:22.826  INFO 11020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-11-30 13:47:23.495  INFO 11020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-11-30 13:47:23.540  INFO 11020 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-30 13:47:23.595  INFO 11020 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.1.Final
+2021-11-30 13:47:23.821  INFO 11020 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-11-30 13:47:23.957  INFO 11020 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-11-30 13:47:25.017 DEBUG 11020 --- [main] org.hibernate.SQL                        : 
+    
+    create table city (
+       id bigint not null auto_increment,
+        name varchar(255),
+        primary key (id)
+    ) engine=MyISAM
+2021-11-30 13:47:25.145 DEBUG 11020 --- [main] org.hibernate.SQL                        : 
+    
+    create table feedback (
+       id bigint not null auto_increment,
+        content varchar(255),
+        rating integer not null,
+        sent_at date,
+        reservation_id bigint,
+        primary key (id)
+    ) engine=MyISAM
+2021-11-30 13:47:25.157 DEBUG 11020 --- [main] org.hibernate.SQL                        : 
+    
+    create table image (
+       id bigint not null auto_increment,
+        name varchar(255),
+        user_id bigint,
+        primary key (id)
+    ) engine=MyISAM
+2021-11-30 13:47:25.170 DEBUG 11020 --- [main] org.hibernate.SQL                        : 
+    
+    create table nationality (
+       id bigint not null auto_increment,
+        name varchar(255),
+        primary key (id)
+    ) engine=MyISAM
+2021-11-30 13:47:25.191 DEBUG 11020 --- [main] org.hibernate.SQL                        : 
+    
+    create table reservation (
+       id bigint not null auto_increment,
+        end_at date,
+        location varchar(255),
+        meeting_date date,
+        reserve_at date,
+        start_from date,
+        status bit,
+        rentee_id bigint,
+        renter_id bigint,
+        primary key (id)
+    ) engine=MyISAM
+2021-11-30 13:47:25.201 DEBUG 11020 --- [main] org.hibernate.SQL                        : 
+    
+    create table role (
+       id bigint not null auto_increment,
+        name varchar(255),
+        primary key (id)
+    ) engine=MyISAM
+2021-11-30 13:47:25.214 DEBUG 11020 --- [main] org.hibernate.SQL                        : 
+    
+    create table user (
+       id bigint not null auto_increment,
+        avatar varchar(255),
+        bust double precision not null,
+        description varchar(255),
+        email varchar(255),
+        facebook_url varchar(255),
+        first_name varchar(255),
+        gender varchar(255),
+        height double precision not null,
+        hips double precision not null,
+        joined_at date,
+        last_login_at date,
+        last_name varchar(255),
+        password varchar(255),
+        phone varchar(255),
+        rented_counter integer not null,
+        status varchar(255),
+        username varchar(255),
+        view_counter integer not null,
+        waist double precision not null,
+        weight double precision not null,
+        year_of_birth bigint,
+        city_id bigint,
+        nationality_id bigint,
+        primary key (id)
+    ) engine=MyISAM
+2021-11-30 13:47:25.226 DEBUG 11020 --- [main] org.hibernate.SQL                        : 
+    
+    create table user_role (
+       user_id bigint not null,
+        role_id bigint not null,
+        primary key (user_id, role_id)
+    ) engine=MyISAM
+2021-11-30 13:47:25.239 DEBUG 11020 --- [main] org.hibernate.SQL                        : 
+    
+    alter table feedback 
+       add constraint FKsjmfrqsfqj98f23ddsbnf4jhy 
+       foreign key (reservation_id) 
+       references reservation (id)
+2021-11-30 13:47:25.294 DEBUG 11020 --- [main] org.hibernate.SQL                        : 
+    
+    alter table image 
+       add constraint FKlxnnh0ir05khn8iu9tgwh1yyk 
+       foreign key (user_id) 
+       references user (id)
+2021-11-30 13:47:25.334 DEBUG 11020 --- [main] org.hibernate.SQL                        : 
+    
+    alter table reservation 
+       add constraint FKrsa3l3fyhlyug3fjmlmgmxxxy 
+       foreign key (rentee_id) 
+       references user (id)
+2021-11-30 13:47:25.373 DEBUG 11020 --- [main] org.hibernate.SQL                        : 
+    
+    alter table reservation 
+       add constraint FKi9tradpy7l2dyg4j52f8dbn3n 
+       foreign key (renter_id) 
+       references user (id)
+2021-11-30 13:47:25.403 DEBUG 11020 --- [main] org.hibernate.SQL                        : 
+    
+    alter table user 
+       add constraint FK29eqyw0gxw5r4f1ommy11nd9i 
+       foreign key (city_id) 
+       references city (id)
+2021-11-30 13:47:25.439 DEBUG 11020 --- [main] org.hibernate.SQL                        : 
+    
+    alter table user 
+       add constraint FKplagps7tcqdonj31pad31fwr2 
+       foreign key (nationality_id) 
+       references nationality (id)
+2021-11-30 13:47:25.474 DEBUG 11020 --- [main] org.hibernate.SQL                        : 
+    
+    alter table user_role 
+       add constraint FKa68196081fvovjhkek5m97n3y 
+       foreign key (role_id) 
+       references role (id)
+2021-11-30 13:47:25.506 DEBUG 11020 --- [main] org.hibernate.SQL                        : 
+    
+    alter table user_role 
+       add constraint FK859n2jvi8ivhui0rl0esws6o 
+       foreign key (user_id) 
+       references user (id)
+2021-11-30 13:47:25.531  INFO 11020 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-30 13:47:25.544  INFO 11020 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 13:47:26.002  WARN 11020 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-30 13:47:26.772  INFO 11020 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: cdf66955-fc05-470b-8216-93de9ce09c25
+
+2021-11-30 13:47:26.913  INFO 11020 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2021-11-30 13:47:26.928  INFO 11020 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7095b688, org.springframework.security.web.context.SecurityContextPersistenceFilter@1e366f0f, org.springframework.security.web.header.HeaderWriterFilter@310cc4d, org.springframework.web.filter.CorsFilter@7c919e1e, org.springframework.security.web.csrf.CsrfFilter@71c91121, org.springframework.security.web.authentication.logout.LogoutFilter@5cb6b81b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@329aa2d1, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@5519ef7d, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@bddac1c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@e0f2686, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4e68aede, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@586b78d7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1c7fd2e0, org.springframework.security.web.session.SessionManagementFilter@4a1c14a6, org.springframework.security.web.access.ExceptionTranslationFilter@531292ed, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@81cd90e]
+2021-11-30 13:47:27.036  INFO 11020 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-11-30 13:47:27.051  INFO 11020 --- [main] com.example.loverbe.LoverBeApplication   : Started LoverBeApplication in 6.641 seconds (JVM running for 7.581)
+2021-11-30 13:47:27.305  INFO 11020 --- [RMI TCP Connection(1)-26.181.242.227] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-30 13:47:27.305  INFO 11020 --- [RMI TCP Connection(1)-26.181.242.227] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-11-30 13:47:27.308  INFO 11020 --- [RMI TCP Connection(1)-26.181.242.227] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2021-11-30 13:51:49.495  INFO 11020 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 13:51:49.500  INFO 11020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-11-30 13:51:49.504  INFO 11020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -24,7 +24,7 @@ public class ImageRestController {
         return new ResponseEntity<>(imageService.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Image> findImage(@PathVariable Long id) {
         Optional<Image> imageOptional = imageService.findById(id);
         if (!imageOptional.isPresent()) {
@@ -39,7 +39,7 @@ public class ImageRestController {
         return new ResponseEntity<>(imageService.save(image), HttpStatus.CREATED);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Image> editImage(@PathVariable Long id, @RequestBody Image image) {
         Optional<Image> imageOptional = imageService.findById(id);
         if (!imageOptional.isPresent()) {
@@ -53,7 +53,7 @@ public class ImageRestController {
     }
 
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Image> deleteImage(@PathVariable Long id) {
         Optional<Image> imageOptional = imageService.findById(id);
         if (!imageOptional.isPresent()) {
