@@ -1,10 +1,12 @@
 package com.example.loverbe.service.image;
 
 import com.example.loverbe.model.Image;
+import com.example.loverbe.model.User;
 import com.example.loverbe.repository.IImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,5 +33,10 @@ public class ImageService implements IImageService{
     @Override
     public Optional<Image> findById(Long id) {
         return imageRepository.findById(id);
+    }
+
+    @Override
+    public List<Image> findAllByUser(User user) {
+        return imageRepository.findAllByUser(user);
     }
 }

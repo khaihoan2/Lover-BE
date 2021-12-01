@@ -10,7 +10,18 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     @ManyToOne
     private User user;
+
+    public Image() {
+
+    }
+
+    public Image(String name, User user) {
+        this.name = name;
+        this.user = user;
+    }
 }
