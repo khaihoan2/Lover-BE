@@ -31,6 +31,15 @@ public class UserRestController {
         return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
     }
 
+    @GetMapping("checkUsername/{username}")
+    public ResponseEntity<?> findByUsername(@PathVariable String username) {
+        User user = userService.findByUsername(username);
+        if (user != null) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<User> addNew(@RequestBody User user) {
         return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
