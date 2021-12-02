@@ -40,6 +40,10 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User user) {
+        if (user.getUsername() == null || user.getPassword() == null ||
+            user.getUsername().equals("") || user.getPassword().equals("")) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         Authentication authentication =
                 authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
