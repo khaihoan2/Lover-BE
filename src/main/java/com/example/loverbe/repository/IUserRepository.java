@@ -13,8 +13,7 @@ public interface IUserRepository extends JpaRepository<User, Long> {
 
     User findByUsername(String username);
 
-    @Query(value = "" +
-            "SELECT\n" +
+    @Query(value = "SELECT\n" +
             "    u.id,\n" +
             "    u.height,\n" +
             "    u.weight,\n" +
@@ -25,7 +24,8 @@ public interface IUserRepository extends JpaRepository<User, Long> {
             "    u.avatar avatar,\n" +
             "    u.joined_at joinedAt\n" +
             "FROM user u\n" +
-            "order by\n" +
-            "    u.joined_at desc limit ?1 offset ?2", nativeQuery = true)
+            "join user_role ur on u.id = ur.user_id\n" +
+            "where u.status = 'Active' and ur.role_id = 2\n" +
+            "order by u.joined_at desc limit ?1 offset ?2", nativeQuery = true)
     Iterable<IUserBuyerDetail> findUserByJoinedAtDesc(Long limit, Long offset);
 }
