@@ -1,8 +1,14 @@
 package com.example.loverbe.controller;
 
+import com.example.loverbe.model.IUserBuyerDetail;
 import com.example.loverbe.model.User;
 import com.example.loverbe.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +44,12 @@ public class UserRestController {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("gallery")
+    public ResponseEntity<Iterable<IUserBuyerDetail>> findUserByJoinedAtDesc(@RequestParam(required = false) Long page) {
+        Iterable<IUserBuyerDetail> users = userService.findUserByJoinedAtDesc(page);
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @PostMapping
