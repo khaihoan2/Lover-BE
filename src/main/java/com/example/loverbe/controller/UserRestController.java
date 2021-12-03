@@ -36,11 +36,16 @@ public class UserRestController {
     private String fileUpload;
 
     @GetMapping
-    public ResponseEntity<Page<User>> findAll(@RequestParam(value = "username", required = false) String username,
-                                              @RequestParam(name = "firstName", required = false) String firstName,
-                                              @RequestParam(name = "viewCounter", required = false) String viewCounter,
-                                              @RequestParam(name = "status", required = false) String status,
-                                              Pageable pageable) {
+    public ResponseEntity<Iterable<User>> findAll() {
+        return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<Page<User>> search(@RequestParam(value = "username", required = false) String username,
+                                             @RequestParam(name = "firstName", required = false) String firstName,
+                                             @RequestParam(name = "viewCounter", required = false) String viewCounter,
+                                             @RequestParam(name = "status", required = false) String status,
+                                             Pageable pageable) {
         return ResponseEntity.ok(userService.findByName(username, firstName, viewCounter, status, pageable));
     }
 
