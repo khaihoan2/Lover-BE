@@ -34,6 +34,12 @@ public class ImageRestController {
         }
     }
 
+    @GetMapping("users/{id}")
+    public ResponseEntity<Iterable<Image>> findByUserId(@PathVariable Long id) {
+        Iterable<Image> images = imageService.findAllByUserId(id);
+        return new ResponseEntity<>(images, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<?> createImage(@Validated @RequestBody Image image) {
         return new ResponseEntity<>(imageService.save(image), HttpStatus.CREATED);

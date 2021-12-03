@@ -5,4 +5,6 @@ import com.example.loverbe.service.IGeneralService;
 
 public interface IImageService extends IGeneralService<Image> {
 
+    Iterable<Image> findAllByUserId(Long id);
+
 }

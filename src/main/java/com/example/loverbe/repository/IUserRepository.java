@@ -15,6 +15,8 @@ public interface IUserRepository extends JpaRepository<User, Long> {
 
     @Query(value = "SELECT\n" +
             "    u.id,\n" +
+            "    u.first_name firstName,\n" +
+            "    u.last_name lastName,\n" +
             "    u.height,\n" +
             "    u.weight,\n" +
             "    u.year_of_birth yearOfBirth,\n" +

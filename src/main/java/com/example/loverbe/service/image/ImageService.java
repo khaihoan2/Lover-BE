@@ -32,4 +32,9 @@ public class ImageService implements IImageService{
     public Optional<Image> findById(Long id) {
         return imageRepository.findById(id);
     }
+
+    @Override
+    public Iterable<Image> findAllByUserId(Long id) {
+        return imageRepository.findAllByUserId(id);
+    }
 }
