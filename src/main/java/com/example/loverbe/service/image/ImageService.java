@@ -36,6 +36,11 @@ public class ImageService implements IImageService{
     }
 
     @Override
+    public Iterable<Image> findAllByUserId(Long id) {
+        return imageRepository.findAllByUserId(id);
+    }
+
+    @Override
     public List<Image> findAllByUser(User user) {
         return imageRepository.findAllByUser(user);
     }

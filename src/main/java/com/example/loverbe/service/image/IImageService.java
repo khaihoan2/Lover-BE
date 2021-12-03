@@ -8,4 +8,7 @@ import java.util.List;
 
 public interface IImageService extends IGeneralService<Image> {
     List<Image> findAllByUser(User user);
+
+    Iterable<Image> findAllByUserId(Long id);
+
 }

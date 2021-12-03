@@ -3,6 +3,10 @@ package com.example.loverbe.model;
 public interface IUserBuyerDetail {
     Long getId();
 
+    String getFirstName();
+
+    String getLastName();
+
     Double getHeight();
 
     Double getWeight();

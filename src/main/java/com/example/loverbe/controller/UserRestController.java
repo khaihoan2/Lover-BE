@@ -16,6 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 @RestController
@@ -47,7 +49,7 @@ public class UserRestController {
     }
 
     @GetMapping("checkUsername/{username}")
-    public ResponseEntity<?> findByUsername(@PathVariable String username) {
+    public ResponseEntity<Object> findByUsername(@PathVariable String username) {
         User user = userService.findByUsername(username);
         if (user != null) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -138,7 +140,11 @@ public class UserRestController {
         //Delete all the images in DB and static folder
         List<Image> images = imageService.findAllByUser(userOptional.get());
         for (Image image : images) {
-            new File(fileUpload + image.getName()).delete();
+            try {
+                Files.delete(Paths.get(fileUpload + image.getName()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             imageService.delete(image.getId());
         }
         userService.delete(id);
