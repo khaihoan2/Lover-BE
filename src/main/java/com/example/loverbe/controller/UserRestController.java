@@ -1,6 +1,7 @@
 package com.example.loverbe.controller;
 
 import com.example.loverbe.model.Image;
+import com.example.loverbe.model.IUserBuyerDetail;
 import com.example.loverbe.model.User;
 import com.example.loverbe.model.dto.UserForm;
 import com.example.loverbe.service.image.IImageService;
@@ -43,6 +44,21 @@ public class UserRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
+    }
+
+    @GetMapping("checkUsername/{username}")
+    public ResponseEntity<?> findByUsername(@PathVariable String username) {
+        User user = userService.findByUsername(username);
+        if (user != null) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("gallery")
+    public ResponseEntity<Iterable<IUserBuyerDetail>> findUserByJoinedAtDesc(@RequestParam(required = false) Long page) {
+        Iterable<IUserBuyerDetail> users = userService.findUserByJoinedAtDesc(page);
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @PostMapping

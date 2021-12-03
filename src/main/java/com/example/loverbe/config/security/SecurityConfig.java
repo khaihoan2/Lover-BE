@@ -1,7 +1,6 @@
 package com.example.loverbe.config.security;
 
 import com.example.loverbe.filter.JwtAuthenticationFilter;
-import com.example.loverbe.model.string_constant.RoleName;
 import com.example.loverbe.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -48,6 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().ignoringAntMatchers("/**");
         http.authorizeRequests()
+                .antMatchers("/", "/api/users/checkUsername/**", "/api/auth/login", "/api/auth/register").permitAll()
                 .antMatchers("/", "/api/auth/login", "/api/auth/register").permitAll()
                 .antMatchers("/api/users/**").permitAll()
                 .antMatchers("/api/services").permitAll()
