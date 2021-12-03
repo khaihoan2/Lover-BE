@@ -39,5 +39,5 @@ out/
 ### SQL ###
 /sql.txt
 
-### Application properties ###
-src/main/resources/application.properties
+.env
+

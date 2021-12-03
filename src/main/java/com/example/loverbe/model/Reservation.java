@@ -42,4 +42,7 @@ public class Reservation {
         this.reserveAt = reserveAt;
         this.status = status;
     }
+
+
+
 }

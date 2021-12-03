@@ -4,6 +4,8 @@ import com.example.loverbe.model.User;
 import com.example.loverbe.model.UserPrincipal;
 import com.example.loverbe.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -45,5 +47,10 @@ public class UserService implements IUserService{
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public Page<User> findByName(String userName, String firstName,String viewCounter,String status, Pageable pageable) {
+        return userRepository.findByName(userName,firstName,viewCounter,status,pageable);
     }
 }

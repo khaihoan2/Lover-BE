@@ -3,6 +3,8 @@ package com.example.loverbe.service.reservation;
 import com.example.loverbe.model.Reservation;
 import com.example.loverbe.repository.IReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -32,4 +34,5 @@ public class ReservationService implements IReservationService {
     public Optional<Reservation> findById(Long id) {
         return reservationRepository.findById(id);
     }
+
 }

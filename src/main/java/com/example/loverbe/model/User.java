@@ -68,4 +68,5 @@ public class User {
     private Integer rentedCounter;
 
     private String status;
+
 }

@@ -17,17 +17,19 @@ public class FeedbackRestController {
     private IFeedbackService feedbackService;
 
     @GetMapping
-    public ResponseEntity<Iterable<Feedback>> getAll(){
-        return new ResponseEntity<>(feedbackService.findAll(), HttpStatus.OK);
+    public ResponseEntity<Iterable<Feedback>> getAll() {
+        return ResponseEntity.ok(feedbackService.findAll());
     }
+
     @GetMapping("{id}")
-    public ResponseEntity<Feedback> findOneFeedback(@PathVariable(name = "id") Long id){
+    public ResponseEntity<Feedback> findOneFeedback(@PathVariable(name = "id") Long id) {
         Optional<Feedback> feedbackOptional = feedbackService.findById(id);
-        if (!feedbackOptional.isPresent()){
+        if (!feedbackOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(feedbackOptional.get(),HttpStatus.OK);
+        return ResponseEntity.ok(feedbackOptional.get());
     }
+
     @PostMapping
     public ResponseEntity<Feedback> addFeedback(@RequestBody Feedback feedback) {
         return new ResponseEntity<>(feedbackService.save(feedback), HttpStatus.CREATED);
@@ -36,10 +38,10 @@ public class FeedbackRestController {
     @PutMapping("{id}")
     public ResponseEntity<Feedback> editFeedback(@PathVariable Long id, @RequestBody Feedback feedback) {
         Optional<Feedback> feedbackOptional = feedbackService.findById(id);
-        if(!feedbackOptional.isPresent()) {
+        if (!feedbackOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            if(feedback.getId() != null) {
+            if (feedback.getId() != null) {
                 feedback.setId(id);
             }
             return new ResponseEntity<>(feedbackService.save(feedback), HttpStatus.OK);
@@ -49,9 +51,9 @@ public class FeedbackRestController {
     @DeleteMapping("{id}")
     public ResponseEntity<Feedback> deleteFeedback(@PathVariable Long id) {
         Optional<Feedback> feedbackOptional = feedbackService.findById(id);
-        if(!feedbackOptional.isPresent()) {
+        if (!feedbackOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else  {
+        } else {
             feedbackService.delete(id);
             return new ResponseEntity<>(feedbackOptional.get(), HttpStatus.OK);
         }

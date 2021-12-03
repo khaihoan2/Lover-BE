@@ -3,6 +3,8 @@ package com.example.loverbe.controller;
 import com.example.loverbe.model.User;
 import com.example.loverbe.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +20,12 @@ public class UserRestController {
     private IUserService userService;
 
     @GetMapping
-    public ResponseEntity<Iterable<User>> findAll() {
-        return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
+    public ResponseEntity<Page<User>> findAll(@RequestParam(value = "username", required = false) String username,
+                                              @RequestParam(name = "firstName", required = false) String firstName,
+                                              @RequestParam(name = "viewCounter", required = false) String viewCounter,
+                                              @RequestParam(name = "status", required = false) String status,
+                                              Pageable pageable) {
+        return ResponseEntity.ok(userService.findByName(username, firstName, viewCounter, status, pageable));
     }
 
     @GetMapping("/{id}")
@@ -56,6 +62,5 @@ public class UserRestController {
         userService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
 
 }
