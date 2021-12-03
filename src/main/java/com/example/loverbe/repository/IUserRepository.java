@@ -14,7 +14,7 @@ public interface IUserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
 
     @Query("select u.firstName,u.yearOfBirth,u.gender,u.nationality.id,u.viewCounter,u.rentedCounter from User u where " +
-                "(:username is null or lower(u.username)" +
+                "(:username is null or lower(u.username,'',u.firstName)" +
                         " like %:username%) and " +
                             "(:firstName is null " +
                                 "or lower(u.firstName) " +
