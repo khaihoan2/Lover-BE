@@ -1,10 +1,8 @@
 package com.example.loverbe.controller;
 
 import com.example.loverbe.model.Image;
-import com.example.loverbe.model.Role;
 import com.example.loverbe.model.User;
 import com.example.loverbe.model.dto.UserForm;
-import com.example.loverbe.model.string_constant.RoleName;
 import com.example.loverbe.service.image.IImageService;
 import com.example.loverbe.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,23 +85,28 @@ public class UserRestController {
 
         // save the avatar into database and static folder
         MultipartFile avatar = userForm.getAvatar();
-        String avatarFileName = avatar.getOriginalFilename();
-        user.setAvatar(avatarFileName);
-        try {
-            FileCopyUtils.copy(avatar.getBytes(), new File(fileUpload + avatarFileName));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // save other images into database and static folder
-        Set<MultipartFile> images = userForm.getImages();
-        for (MultipartFile image : images) {
-            String imageFileName = image.getOriginalFilename();
+        if (avatar != null) {
+            String avatarFileName = avatar.getOriginalFilename();
+            user.setAvatar(avatarFileName);
             try {
-                FileCopyUtils.copy(image.getBytes(), new File(fileUpload + imageFileName));
+                FileCopyUtils.copy(avatar.getBytes(), new File(fileUpload + avatarFileName));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            imageService.save(new Image(imageFileName, user));
+        }
+
+        // save other images into database and static folder
+        Set<MultipartFile> images = userForm.getImages();
+        if (images != null) {
+            for (MultipartFile image : images) {
+                String imageFileName = image.getOriginalFilename();
+                try {
+                    FileCopyUtils.copy(image.getBytes(), new File(fileUpload + imageFileName));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                imageService.save(new Image(imageFileName, user));
+            }
         }
 
         user.setId(id);
