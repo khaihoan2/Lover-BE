@@ -18,6 +18,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.*;
 
 @RestController
@@ -67,6 +69,10 @@ public class UserRestController {
     public ResponseEntity<User> addNew(@RequestBody UserForm userForm) {
 
         User user = UserForm.extract(userForm);
+        user.setViewCounter(0);
+        user.setRentedCounter(0);
+        user.setJoinedAt(Date.valueOf(LocalDate.now()));
+        user.setLastLoginAt(Date.valueOf(LocalDate.now()));
 
         // save the avatar into database and static folder
         MultipartFile avatar = userForm.getAvatar();
