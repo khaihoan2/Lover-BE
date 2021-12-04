@@ -1,7 +1,7 @@
 package com.example.loverbe.repository;
 
-import com.example.loverbe.model.Image;
-import com.example.loverbe.model.User;
+import com.example.loverbe.model.entity.Image;
+import com.example.loverbe.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

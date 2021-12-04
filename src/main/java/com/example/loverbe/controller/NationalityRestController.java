@@ -1,6 +1,6 @@
 package com.example.loverbe.controller;
 
-import com.example.loverbe.model.Nationality;
+import com.example.loverbe.model.entity.Nationality;
 import com.example.loverbe.service.nationality.INationalityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

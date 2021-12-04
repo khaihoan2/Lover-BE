@@ -1,6 +1,6 @@
 package com.example.loverbe.controller;
 
-import com.example.loverbe.model.Reservation;
+import com.example.loverbe.model.entity.Reservation;
 import com.example.loverbe.service.reservation.IReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
 package com.example.loverbe.controller;
 
-import com.example.loverbe.model.Feedback;
+import com.example.loverbe.model.entity.Feedback;
 import com.example.loverbe.service.feedback.IFeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,8 +1,8 @@
 package com.example.loverbe.controller;
 
-import com.example.loverbe.model.Image;
+import com.example.loverbe.model.entity.Image;
 import com.example.loverbe.model.IUserBuyerDetail;
-import com.example.loverbe.model.User;
+import com.example.loverbe.model.entity.User;
 import com.example.loverbe.model.dto.UserForm;
 import com.example.loverbe.service.image.IImageService;
 import com.example.loverbe.service.user.IUserService;

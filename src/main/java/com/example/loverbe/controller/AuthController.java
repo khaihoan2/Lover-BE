@@ -1,8 +1,8 @@
 package com.example.loverbe.controller;
 
 import com.example.loverbe.model.JwtResponse;
-import com.example.loverbe.model.Role;
-import com.example.loverbe.model.User;
+import com.example.loverbe.model.entity.Role;
+import com.example.loverbe.model.entity.User;
 import com.example.loverbe.model.string_constant.RoleName;
 import com.example.loverbe.service.jwt.JwtService;
 import com.example.loverbe.service.user.IUserService;

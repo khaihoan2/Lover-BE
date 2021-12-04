@@ -1,6 +1,6 @@
 package com.example.loverbe.service.city;
 
-import com.example.loverbe.model.City;
+import com.example.loverbe.model.entity.City;
 import com.example.loverbe.repository.ICityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

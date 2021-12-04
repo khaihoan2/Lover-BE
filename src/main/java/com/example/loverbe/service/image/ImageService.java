@@ -1,7 +1,7 @@
 package com.example.loverbe.service.image;
 
-import com.example.loverbe.model.Image;
-import com.example.loverbe.model.User;
+import com.example.loverbe.model.entity.Image;
+import com.example.loverbe.model.entity.User;
 import com.example.loverbe.repository.IImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

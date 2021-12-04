@@ -1,9 +1,9 @@
 package com.example.loverbe.repository;
 
-import com.example.loverbe.model.entity.City;
+import com.example.loverbe.model.entity.UserService;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ICityRepository extends JpaRepository<City, Long> {
+public interface IUserServiceRepository extends JpaRepository<UserService, Long> {
 }

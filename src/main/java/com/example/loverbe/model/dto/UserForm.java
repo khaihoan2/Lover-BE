@@ -1,9 +1,9 @@
 package com.example.loverbe.model.dto;
 
-import com.example.loverbe.model.City;
-import com.example.loverbe.model.Nationality;
-import com.example.loverbe.model.Role;
-import com.example.loverbe.model.User;
+import com.example.loverbe.model.entity.City;
+import com.example.loverbe.model.entity.Nationality;
+import com.example.loverbe.model.entity.Role;
+import com.example.loverbe.model.entity.User;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
