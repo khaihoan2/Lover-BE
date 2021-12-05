@@ -1,7 +1,7 @@
 package com.example.loverbe.controller;
 
 
-import com.example.loverbe.model.Image;
+import com.example.loverbe.model.entity.Image;
 import com.example.loverbe.service.image.IImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +24,7 @@ public class ImageRestController {
         return new ResponseEntity<>(imageService.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Image> findImage(@PathVariable Long id) {
         Optional<Image> imageOptional = imageService.findById(id);
         if (!imageOptional.isPresent()) {
@@ -41,11 +41,11 @@ public class ImageRestController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createImage(@Validated @RequestBody Image image) {
+    public ResponseEntity<Image> createImage(@Validated @RequestBody Image image) {
         return new ResponseEntity<>(imageService.save(image), HttpStatus.CREATED);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Image> editImage(@PathVariable Long id, @RequestBody Image image) {
         Optional<Image> imageOptional = imageService.findById(id);
         if (!imageOptional.isPresent()) {
@@ -59,7 +59,7 @@ public class ImageRestController {
     }
 
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Image> deleteImage(@PathVariable Long id) {
         Optional<Image> imageOptional = imageService.findById(id);
         if (!imageOptional.isPresent()) {

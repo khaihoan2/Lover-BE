@@ -1,5 +1,7 @@
 package com.example.loverbe.model;
 
+import com.example.loverbe.model.entity.Role;
+import com.example.loverbe.model.entity.User;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

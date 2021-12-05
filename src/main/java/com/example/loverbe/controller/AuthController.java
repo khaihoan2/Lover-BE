@@ -1,8 +1,8 @@
 package com.example.loverbe.controller;
 
 import com.example.loverbe.model.JwtResponse;
-import com.example.loverbe.model.Role;
-import com.example.loverbe.model.User;
+import com.example.loverbe.model.entity.Role;
+import com.example.loverbe.model.entity.User;
 import com.example.loverbe.model.string_constant.RoleName;
 import com.example.loverbe.service.jwt.JwtService;
 import com.example.loverbe.service.user.IUserService;
@@ -39,7 +39,7 @@ public class AuthController {
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody User user) {
+    public ResponseEntity<Object> login(@RequestBody User user) {
         if (user.getUsername() == null || user.getPassword() == null ||
             user.getUsername().equals("") || user.getPassword().equals("")) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -55,7 +55,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody User user) {
+    public ResponseEntity<Object> register(@RequestBody User user) {
         User user1 = userService.findByUsername(user.getUsername());
         if (user1 == null) {
             Set<Role> roles = new HashSet<>();

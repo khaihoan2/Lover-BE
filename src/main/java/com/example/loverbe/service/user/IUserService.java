@@ -1,7 +1,7 @@
 package com.example.loverbe.service.user;
 
 import com.example.loverbe.model.IUserBuyerDetail;
-import com.example.loverbe.model.User;
+import com.example.loverbe.model.entity.User;
 import com.example.loverbe.service.IGeneralService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

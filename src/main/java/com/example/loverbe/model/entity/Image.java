@@ -1,4 +1,4 @@
-package com.example.loverbe.model;
+package com.example.loverbe.model.entity;
 
 import lombok.Data;
 
@@ -13,4 +13,13 @@ public class Image {
     private String name;
     @ManyToOne
     private User user;
+
+    public Image() {
+
+    }
+
+    public Image(String name, User user) {
+        this.name = name;
+        this.user = user;
+    }
 }

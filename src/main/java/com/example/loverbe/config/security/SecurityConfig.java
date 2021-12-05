@@ -1,7 +1,6 @@
 package com.example.loverbe.config.security;
 
 import com.example.loverbe.filter.JwtAuthenticationFilter;
-import com.example.loverbe.model.string_constant.RoleName;
 import com.example.loverbe.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -49,6 +48,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().ignoringAntMatchers("/**");
         http.authorizeRequests()
                 .antMatchers("/", "/model**", "/api/users/checkUsername/**", "/api/auth/login", "/api/auth/register").permitAll()
+                .antMatchers("/api/users/**").permitAll()
+                .antMatchers("/api/services").permitAll()
+                .antMatchers("/api/cities").permitAll()
+                .antMatchers("/api/nationalities").permitAll()
+//                .access("hasRole('ROLE_ADMIN')")
                 .anyRequest().authenticated()
                 .and().csrf().disable();
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

@@ -1,6 +1,6 @@
 package com.example.loverbe.controller;
 
-import com.example.loverbe.model.Service;
+import com.example.loverbe.model.entity.Service;
 import com.example.loverbe.service.service.IServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/services")
+@CrossOrigin("*")
 public class ServiceController {
     @Autowired
     private IServiceService serviceService;
