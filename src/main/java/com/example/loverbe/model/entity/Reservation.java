@@ -29,10 +29,12 @@ public class Reservation {
 
     private Boolean status;
 
+    private Double totalMoney;
+
     public Reservation() {
     }
 
-    public Reservation(Long id, User renter, User rentee, Timestamp startFrom, Timestamp endAt, String location, Timestamp reserveAt, Boolean status) {
+    public Reservation(Long id, User renter, User rentee, Timestamp startFrom, Timestamp endAt, String location, Timestamp reserveAt, Boolean status, Double totalMoney) {
         this.id = id;
         this.renter = renter;
         this.rentee = rentee;
@@ -41,5 +43,6 @@ public class Reservation {
         this.location = location;
         this.reserveAt = reserveAt;
         this.status = status;
+        this.totalMoney = totalMoney;
     }
 }
