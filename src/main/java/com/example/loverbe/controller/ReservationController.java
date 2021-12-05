@@ -1,5 +1,6 @@
 package com.example.loverbe.controller;
 
+import com.example.loverbe.model.dto.ReservationForm;
 import com.example.loverbe.model.entity.Reservation;
 import com.example.loverbe.service.reservation.IReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +9,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Optional;
 
 @Controller
 @RequestMapping("/api/reservations")
-@RestController
+@CrossOrigin("*")
 public class ReservationController {
 
     @Autowired
@@ -33,7 +36,21 @@ public class ReservationController {
     }
 
     @PostMapping
-    public ResponseEntity<Reservation> save(@RequestBody Reservation reservation) {
+    public ResponseEntity<?> save(@RequestBody ReservationForm reservationForm) {
+        Date date = new Date(System.currentTimeMillis());
+        Reservation reservation = new Reservation();
+        reservation.setRenter(reservationForm.getRenter());
+        reservation.setRentee(reservationForm.getRentee());
+        reservation.setLocation(reservation.getLocation());
+        int startFromHour = Integer.parseInt(reservationForm.getStartFrom().substring(0, 2));
+        int startFromMinute = Integer.parseInt(reservationForm.getStartFrom().substring(3));
+        Timestamp startForm = new Timestamp(date.getYear(), date.getMonth(), date.getDay(), startFromHour, startFromMinute, 0, 0);
+        reservation.setStartFrom(startForm);
+        int endAtHour = Integer.parseInt(reservationForm.getStartFrom().substring(0, 2));
+        int endAtMinute = Integer.parseInt(reservationForm.getStartFrom().substring(3));
+        Timestamp endAt = new Timestamp(date.getYear(), date.getMonth(), date.getDay(), endAtHour, endAtMinute, 0, 0);
+        reservation.setEndAt(endAt);
+        reservation.setReserveAt(new Timestamp(System.currentTimeMillis()));
         return new ResponseEntity<>(reservationService.save(reservation), HttpStatus.OK);
     }
 
