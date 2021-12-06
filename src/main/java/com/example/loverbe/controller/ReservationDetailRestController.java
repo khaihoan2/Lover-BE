@@ -1,5 +1,6 @@
 package com.example.loverbe.controller;
 
+import com.example.loverbe.model.entity.Reservation;
 import com.example.loverbe.model.entity.ReservationDetail;
 import com.example.loverbe.service.reservationDetail.IReservationDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,14 @@ public class ReservationDetailRestController {
             return new ResponseEntity<>(reservationDetail.get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("info/{id}")
+    public ResponseEntity<Iterable<ReservationDetail>> findByReservation(@PathVariable Long id) {
+        Reservation reservation = new Reservation();
+        reservation.setId(id);
+        Iterable<ReservationDetail> reservationDetails = reservationDetailService.findByReservation(reservation);
+        return new ResponseEntity<>(reservationDetails, HttpStatus.OK);
     }
 
     @PostMapping

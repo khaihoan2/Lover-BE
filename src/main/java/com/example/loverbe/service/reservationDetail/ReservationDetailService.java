@@ -1,5 +1,6 @@
 package com.example.loverbe.service.reservationDetail;
 
+import com.example.loverbe.model.entity.Reservation;
 import com.example.loverbe.model.entity.ReservationDetail;
 import com.example.loverbe.repository.IReservationDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,10 @@ public class ReservationDetailService implements IReservationDetailService {
     @Override
     public Optional<ReservationDetail> findById(Long id) {
         return reservationDetailRepository.findById(id);
+    }
+
+    @Override
+    public Iterable<ReservationDetail> findByReservation(Reservation reservation) {
+        return reservationDetailRepository.findByReservation(reservation);
     }
 }
