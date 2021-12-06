@@ -54,6 +54,95 @@ INSERT INTO lover_management.user (avatar, bust, description, email, facebook_ur
 
 INSERT INTO lover_management.user (avatar, bust, description, email, facebook_url, first_name, gender, height, hips, joined_at, last_login_at, last_name, password, phone, rented_counter, status, username, view_counter, waist, weight, year_of_birth, city_id, nationality_id) VALUES (null, 91, null, null, null, 'Toe', 'Female', 175, 88, '2020-03-05', null, null, '$2a$10$TNO6fHpfFHgATGn94qBtm.qk4O1wqTNNcZbpch1pxCTbAjdXLwoAG', null, 8, null, 'Toe', 1653, 59, 53, 1999, null, null);
 
+UPDATE lover_management.user t
+SET t.avatar = 'model_15.jpg'
+WHERE t.id = 15;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_11.jpg'
+WHERE t.id = 11;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_19.jpg'
+WHERE t.id = 19;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_3.jpg'
+WHERE t.id = 3;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_7.jpg'
+WHERE t.id = 7;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_4.jpg'
+WHERE t.id = 4;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_12.jpg'
+WHERE t.id = 21;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_8.jpg'
+WHERE t.id = 8;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_1.jpg'
+WHERE t.id = 1;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_6.jpg'
+WHERE t.id = 6;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_12.jpg'
+WHERE t.id = 12;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_18.jpg'
+WHERE t.id = 18;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_17.jpg'
+WHERE t.id = 17;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_16.jpg'
+WHERE t.id = 16;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_14.jpg'
+WHERE t.id = 14;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_13.jpg'
+WHERE t.id = 13;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_2.jpg'
+WHERE t.id = 2;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_9.jpg'
+WHERE t.id = 9;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_10.jpg'
+WHERE t.id = 10;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_5.jpg'
+WHERE t.id = 5;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_20.jpg'
+WHERE t.id = 20;
+
+UPDATE lover_management.user t
+SET t.avatar = 'model_18.jpg'
+WHERE t.id = 22;
+
+
 
 # IMAGE
 INSERT INTO lover_management.image (name, user_id)

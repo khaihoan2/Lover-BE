@@ -12,6 +12,9 @@ public class ReservationDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    private Reservation reservation;
+
     private String serviceName;
 
     private Double price;
@@ -19,8 +22,9 @@ public class ReservationDetail {
     public ReservationDetail() {
     }
 
-    public ReservationDetail(Long id, String serviceName, Double price) {
+    public ReservationDetail(Long id, Reservation reservation, String serviceName, Double price) {
         this.id = id;
+        this.reservation = reservation;
         this.serviceName = serviceName;
         this.price = price;
     }

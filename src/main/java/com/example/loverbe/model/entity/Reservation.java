@@ -1,6 +1,7 @@
 package com.example.loverbe.model.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -31,12 +32,6 @@ public class Reservation {
     private Boolean status;
 
     private Double totalMoney;
-
-    @ManyToMany
-    private List<ReservationDetail> reservationDetails;
-
-    @ManyToOne
-    private ReservationDetail reservationDetail;
 
     public Reservation() {
     }

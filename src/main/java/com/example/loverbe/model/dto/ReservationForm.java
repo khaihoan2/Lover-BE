@@ -1,7 +1,10 @@
 package com.example.loverbe.model.dto;
 
+import com.example.loverbe.model.entity.ReservationDetail;
 import com.example.loverbe.model.entity.User;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class ReservationForm {
@@ -22,4 +25,6 @@ public class ReservationForm {
     private Boolean status;
 
     private Double totalMoney;
+
+    private List<ReservationDetail> reservationDetails;
 }

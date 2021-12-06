@@ -2,8 +2,10 @@ package com.example.loverbe.controller;
 
 import com.example.loverbe.model.dto.ReservationForm;
 import com.example.loverbe.model.entity.Reservation;
+import com.example.loverbe.model.entity.ReservationDetail;
 import com.example.loverbe.model.entity.User;
 import com.example.loverbe.service.reservation.IReservationService;
+import com.example.loverbe.service.reservationDetail.IReservationDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -21,6 +24,9 @@ public class ReservationController {
 
     @Autowired
     private IReservationService reservationService;
+
+    @Autowired
+    private IReservationDetailService reservationDetailService;
 
     @GetMapping
     public ResponseEntity<Iterable<Reservation>> findAll() {
@@ -61,7 +67,14 @@ public class ReservationController {
         Timestamp endAt = new Timestamp(date.getYear(), date.getMonth(), date.getDay(), endAtHour, endAtMinute, 0, 0);
         reservation.setEndAt(endAt);
         reservation.setReserveAt(new Timestamp(System.currentTimeMillis()));
-        return new ResponseEntity<>(reservationService.save(reservation), HttpStatus.OK);
+        Reservation reservationSave = reservationService.save(reservation);
+
+        List<ReservationDetail> reservationDetails = reservationForm.getReservationDetails();
+        for (ReservationDetail reservationDetail : reservationDetails) {
+            reservationDetail.setReservation(reservationSave);
+            reservationDetailService.save(reservationDetail);
+        }
+        return new ResponseEntity<>(reservationSave, HttpStatus.OK);
     }
 
     @PutMapping("{id}")
