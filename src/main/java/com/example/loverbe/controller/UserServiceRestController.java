@@ -1,5 +1,6 @@
 package com.example.loverbe.controller;
 
+import com.example.loverbe.model.entity.User;
 import com.example.loverbe.model.entity.UserService;
 import com.example.loverbe.service.user_service.IUserServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,14 @@ public class UserServiceRestController {
         } else {
             return new ResponseEntity<>(userServiceOptional.get(), HttpStatus.OK);
         }
+    }
+
+    @GetMapping("/buyer/{id}")
+    public ResponseEntity<Iterable<UserService>> findByUser(@PathVariable Long id) {
+        User user = new User();
+        user.setId(id);
+        Iterable<UserService> userServices = userServiceService.findByUser(user);
+        return new ResponseEntity<>(userServices, HttpStatus.OK);
     }
 
     @PostMapping

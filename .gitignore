@@ -39,4 +39,4 @@ out/
 ### SQL ###
 ./sql.txt
 
-./.env
+.env

@@ -35,7 +35,7 @@ public class ImageRestController {
     }
 
     @GetMapping("users/{id}")
-    public ResponseEntity<Iterable<Image>> findByUserId(@PathVariable Long id) {
+    public ResponseEntity<Iterable<Image>> findImagesByUserId(@PathVariable Long id) {
         Iterable<Image> images = imageService.findAllByUserId(id);
         return new ResponseEntity<>(images, HttpStatus.OK);
     }
