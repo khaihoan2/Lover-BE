@@ -50,7 +50,8 @@ public class ReservationController {
         Reservation reservation = new Reservation();
         reservation.setRenter(reservationForm.getRenter());
         reservation.setRentee(reservationForm.getRentee());
-        reservation.setLocation(reservation.getLocation());
+        reservation.setLocation(reservationForm.getLocation());
+        reservation.setTotalMoney(reservationForm.getTotalMoney());
         int startFromHour = Integer.parseInt(reservationForm.getStartFrom().substring(0, 2));
         int startFromMinute = Integer.parseInt(reservationForm.getStartFrom().substring(3));
         Timestamp startForm = new Timestamp(date.getYear(), date.getMonth(), date.getDay(), startFromHour, startFromMinute, 0, 0);
@@ -68,6 +69,13 @@ public class ReservationController {
         Optional<Reservation> optionalReservation = reservationService.findById(id);
         if (optionalReservation.isPresent()) {
             reservation.setId(id);
+            reservation.setRenter(optionalReservation.get().getRenter());
+            reservation.setRentee(optionalReservation.get().getRentee());
+            reservation.setStartFrom(optionalReservation.get().getStartFrom());
+            reservation.setEndAt(optionalReservation.get().getEndAt());
+            reservation.setTotalMoney(optionalReservation.get().getTotalMoney());
+            reservation.setLocation(optionalReservation.get().getLocation());
+            reservation.setReserveAt(optionalReservation.get().getReserveAt());
             return new ResponseEntity<>(reservationService.save(reservation), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);

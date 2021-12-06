@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Data
@@ -30,6 +31,12 @@ public class Reservation {
     private Boolean status;
 
     private Double totalMoney;
+
+    @ManyToMany
+    private List<ReservationDetail> reservationDetails;
+
+    @ManyToOne
+    private ReservationDetail reservationDetail;
 
     public Reservation() {
     }

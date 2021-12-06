@@ -20,4 +20,6 @@ public class ReservationForm {
     private String reserveAt;
 
     private Boolean status;
+
+    private Double totalMoney;
 }
