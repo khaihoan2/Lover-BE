@@ -39,11 +39,12 @@ public interface IUserRepository extends JpaRepository<User, Long> {
             "       u.waist,\n" +
             "       u.hips,\n" +
             "       u.avatar,\n" +
-            "       u.joined_at\n" +
-            "from reservation r\n" +
-            "join user u on r.rentee_id = u.id\n" +
-            "join feedback f on r.id = f.reservation_id\n" +
+            "       u.joined_at,\n" +
+            "       u.rented_counter\n" +
+            "from user u\n" +
+            "join reservation r on u.id = r.rentee_id\n" +
             "where u.status = 'Active' and r.status = 'Completed'\n" +
-            "order by f.rating desc limit ?1 offset 0", nativeQuery = true)
+            "group by u.id\n" +
+            "order by u.rented_counter desc limit ?1 offset 0", nativeQuery = true)
     Iterable<IUserBuyerDetail> findUserHighestRanking(Long limit);
 }
