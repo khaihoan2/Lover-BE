@@ -29,14 +29,14 @@ public class Reservation {
 
     private Timestamp reserveAt;
 
-    private Boolean status;
+    private String status;
 
     private Double totalMoney;
 
     public Reservation() {
     }
 
-    public Reservation(Long id, User renter, User rentee, Timestamp startFrom, Timestamp endAt, String location, Timestamp reserveAt, Boolean status, Double totalMoney) {
+    public Reservation(Long id, User renter, User rentee, Timestamp startFrom, Timestamp endAt, String location, Timestamp reserveAt, String status, Double totalMoney) {
         this.id = id;
         this.renter = renter;
         this.rentee = rentee;
