@@ -62,4 +62,10 @@ public class UserService implements IUserService{
         return userRepository.findUserByJoinedAtDesc(limit, offset);
     }
 
+    @Override
+    public Iterable<IUserBuyerDetail> findUserHighestRanking() {
+        Long limit = 6l;
+        return userRepository.findUserHighestRanking(limit);
+    }
+
 }

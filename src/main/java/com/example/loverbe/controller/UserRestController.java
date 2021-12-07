@@ -63,6 +63,12 @@ public class UserRestController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
+    @GetMapping("rating")
+    public ResponseEntity<Iterable<IUserBuyerDetail>> findUserHighestRanking() {
+        Iterable<IUserBuyerDetail> userBuyerDetails = userService.findUserHighestRanking();
+        return new ResponseEntity<>(userBuyerDetails, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<User> addNew(@RequestBody UserForm userForm) {
 

@@ -34,7 +34,7 @@ public class ReservationDetailRestController {
     }
 
     @GetMapping("info/{id}")
-    public ResponseEntity<Iterable<ReservationDetail>> findByReservation(@PathVariable Long id) {
+    public ResponseEntity<Iterable<ReservationDetail>> findByReservationDetail(@PathVariable Long id) {
         Reservation reservation = new Reservation();
         reservation.setId(id);
         Iterable<ReservationDetail> reservationDetails = reservationDetailService.findByReservation(reservation);

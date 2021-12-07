@@ -28,4 +28,22 @@ public interface IUserRepository extends JpaRepository<User, Long> {
             "where u.status = 'Active' and ur.role_id = 2\n" +
             "order by u.joined_at desc limit ?1 offset ?2", nativeQuery = true)
     Iterable<IUserBuyerDetail> findUserByJoinedAtDesc(Long limit, Long offset);
+
+    @Query(value = "select u.id,\n" +
+            "       u.first_name,\n" +
+            "       u.last_name,\n" +
+            "       u.height,\n" +
+            "       u.weight,\n" +
+            "       u.year_of_birth,\n" +
+            "       u.bust,\n" +
+            "       u.waist,\n" +
+            "       u.hips,\n" +
+            "       u.avatar,\n" +
+            "       u.joined_at\n" +
+            "from reservation r\n" +
+            "join user u on r.rentee_id = u.id\n" +
+            "join feedback f on r.id = f.reservation_id\n" +
+            "where u.status = 'Active' and r.status = true\n" +
+            "order by f.rating desc limit ?1 offset 0", nativeQuery = true)
+    Iterable<IUserBuyerDetail> findUserHighestRanking(Long limit);
 }
