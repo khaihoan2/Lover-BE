@@ -1,6 +1,6 @@
 package com.example.loverbe.service.nationality;
 
-import com.example.loverbe.model.Nationality;
+import com.example.loverbe.model.entity.Nationality;
 import com.example.loverbe.repository.INationalityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

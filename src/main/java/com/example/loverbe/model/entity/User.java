@@ -1,4 +1,4 @@
-package com.example.loverbe.model;
+package com.example.loverbe.model.entity;
 
 import lombok.Data;
 

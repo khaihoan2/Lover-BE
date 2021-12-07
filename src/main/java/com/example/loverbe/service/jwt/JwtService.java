@@ -11,23 +11,26 @@ import java.util.Date;
 @Service
 public class JwtService {
 
-    private String secret = "134840298";
+    private String secretCode = "1237219732";
 
-    private Long expireTime = 36000l;
+    private Long expTime = 36000l;
 
     public String createTokenLogin(Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String username = userDetails.getUsername();
-        return Jwts.builder()
-                .setSubject(username)
+        String token = Jwts.builder()
+                .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(new Date().getTime() + expireTime))
-                .signWith(SignatureAlgorithm.HS512, secret)
+                .setExpiration(new Date(new Date().getTime() + expTime * 1000))
+                .signWith(SignatureAlgorithm.HS512, secretCode)
                 .compact();
+        return token;
     }
 
     public String getUsernameByToken(String token) {
-        String username = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
+        String username = Jwts.parser()
+                .setSigningKey(secretCode)
+                .parseClaimsJws(token)
+                .getBody().getSubject();
         return username;
     }
 

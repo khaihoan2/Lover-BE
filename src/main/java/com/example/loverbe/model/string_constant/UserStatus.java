@@ -1,6 +1,7 @@
 package com.example.loverbe.model.string_constant;
 
 public interface UserStatus {
+    String USER = "User";
     String PENDING = "Pending";
     String ACTIVE = "Active";
     String DEACTIVATED = "Deactivated";

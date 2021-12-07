@@ -1,6 +1,6 @@
 package com.example.loverbe.repository;
 
-import com.example.loverbe.model.City;
+import com.example.loverbe.model.entity.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
 package com.example.loverbe.controller;
 
 
-import com.example.loverbe.model.Image;
+import com.example.loverbe.model.entity.Image;
 import com.example.loverbe.service.image.IImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,8 +34,14 @@ public class ImageRestController {
         }
     }
 
+    @GetMapping("users/{id}")
+    public ResponseEntity<Iterable<Image>> findImagesByUserId(@PathVariable Long id) {
+        Iterable<Image> images = imageService.findAllByUserId(id);
+        return new ResponseEntity<>(images, HttpStatus.OK);
+    }
+
     @PostMapping
-    public ResponseEntity<?> createImage(@Validated @RequestBody Image image) {
+    public ResponseEntity<Image> createImage(@Validated @RequestBody Image image) {
         return new ResponseEntity<>(imageService.save(image), HttpStatus.CREATED);
     }
 
