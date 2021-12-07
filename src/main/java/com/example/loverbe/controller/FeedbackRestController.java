@@ -20,7 +20,7 @@ public class FeedbackRestController {
     public ResponseEntity<Iterable<Feedback>> getAll(){
         return new ResponseEntity<>(feedbackService.findAll(), HttpStatus.OK);
     }
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Feedback> findOneFeedback(@PathVariable(name = "id") Long id){
         Optional<Feedback> feedbackOptional = feedbackService.findById(id);
         if (!feedbackOptional.isPresent()){
@@ -33,7 +33,7 @@ public class FeedbackRestController {
         return new ResponseEntity<>(feedbackService.save(feedback), HttpStatus.CREATED);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Feedback> editFeedback(@PathVariable Long id, @RequestBody Feedback feedback) {
         Optional<Feedback> feedbackOptional = feedbackService.findById(id);
         if(!feedbackOptional.isPresent()) {
@@ -46,7 +46,7 @@ public class FeedbackRestController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Feedback> deleteFeedback(@PathVariable Long id) {
         Optional<Feedback> feedbackOptional = feedbackService.findById(id);
         if(!feedbackOptional.isPresent()) {

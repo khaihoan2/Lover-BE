@@ -1,10 +1,13 @@
 package com.example.loverbe.service.reservation;
 
 import com.example.loverbe.model.Reservation;
+import com.example.loverbe.model.User;
 import com.example.loverbe.repository.IReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
