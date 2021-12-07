@@ -22,29 +22,63 @@ public interface IUserRepository extends JpaRepository<User, Long> {
             "    u.waist,\n" +
             "    u.hips,\n" +
             "    u.avatar avatar,\n" +
-            "    u.joined_at joinedAt\n" +
+            "    u.joined_at joinedAt,\n" +
+            "    u.rented_counter rentedCounter\n" +
             "FROM user u\n" +
             "join user_role ur on u.id = ur.user_id\n" +
             "where u.status = 'Active' and ur.role_id = 2\n" +
             "order by u.joined_at desc limit ?1 offset ?2", nativeQuery = true)
     Iterable<IUserBuyerDetail> findUserByJoinedAtDesc(Long limit, Long offset);
 
-    @Query(value = "select u.id,\n" +
-            "       u.first_name,\n" +
-            "       u.last_name,\n" +
-            "       u.height,\n" +
-            "       u.weight,\n" +
-            "       u.year_of_birth,\n" +
-            "       u.bust,\n" +
-            "       u.waist,\n" +
-            "       u.hips,\n" +
-            "       u.avatar,\n" +
-            "       u.joined_at,\n" +
-            "       u.rented_counter\n" +
+    @Query(value = "SELECT\n" +
+            "    u.id,\n" +
+            "    u.first_name firstName,\n" +
+            "    u.last_name lastName,\n" +
+            "    u.height,\n" +
+            "    u.weight,\n" +
+            "    u.year_of_birth yearOfBirth,\n" +
+            "    u.bust,\n" +
+            "    u.waist,\n" +
+            "    u.hips,\n" +
+            "    u.avatar avatar,\n" +
+            "    u.joined_at joinedAt,\n" +
+            "    u.rented_counter rentedCounter\n" +
             "from user u\n" +
-            "join reservation r on u.id = r.rentee_id\n" +
-            "where u.status = 'Active' and r.status = 'Completed'\n" +
-            "group by u.id\n" +
             "order by u.rented_counter desc limit ?1 offset 0", nativeQuery = true)
     Iterable<IUserBuyerDetail> findUserHighestRanking(Long limit);
+
+    @Query(value = "(SELECT\n" +
+            "    u.id,\n" +
+            "    u.first_name firstName,\n" +
+            "    u.last_name lastName,\n" +
+            "    u.height,\n" +
+            "    u.weight,\n" +
+            "    u.year_of_birth yearOfBirth,\n" +
+            "    u.bust,\n" +
+            "    u.waist,\n" +
+            "    u.hips,\n" +
+            "    u.avatar avatar,\n" +
+            "    u.joined_at joinedAt,\n" +
+            "    u.rented_counter rentedCounter\n" +
+            "from user u\n" +
+            "where u.gender = 'Female'\n" +
+            "order by u.rented_counter desc limit ?1 offset 0)\n" +
+            "union\n" +
+            "(SELECT\n" +
+            "    u.id,\n" +
+            "    u.first_name firstName,\n" +
+            "    u.last_name lastName,\n" +
+            "    u.height,\n" +
+            "    u.weight,\n" +
+            "    u.year_of_birth yearOfBirth,\n" +
+            "    u.bust,\n" +
+            "    u.waist,\n" +
+            "    u.hips,\n" +
+            "    u.avatar avatar,\n" +
+            "    u.joined_at joinedAt,\n" +
+            "    u.rented_counter rentedCounter\n" +
+            " from user u\n" +
+            "where u.gender = 'Male'\n" +
+            " order by u.rented_counter desc limit ?2 offset 0)", nativeQuery = true)
+    Iterable<IUserBuyerDetail> findUserLimitFemaleLimitMale(Long limitFemale, Long limitMale);
 }

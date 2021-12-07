@@ -68,4 +68,11 @@ public class UserService implements IUserService{
         return userRepository.findUserHighestRanking(limit);
     }
 
+    @Override
+    public Iterable<IUserBuyerDetail> findUserLimitFemaleLimitMale() {
+        Long limitMale = 4l;
+        Long limitFemale = 8l;
+        return userRepository.findUserLimitFemaleLimitMale(limitFemale, limitMale);
+    }
+
 }

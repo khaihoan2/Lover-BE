@@ -17,4 +17,7 @@ public interface IUserService extends IGeneralService<User>, UserDetailsService 
 
     Iterable<IUserBuyerDetail> findUserHighestRanking();
 
+    Iterable<IUserBuyerDetail> findUserLimitFemaleLimitMale();
+
+
 }

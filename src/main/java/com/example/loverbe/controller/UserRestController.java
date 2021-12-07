@@ -69,6 +69,12 @@ public class UserRestController {
         return new ResponseEntity<>(userBuyerDetails, HttpStatus.OK);
     }
 
+    @GetMapping("ratingLimitFemaleLimitMale")
+    public ResponseEntity<Iterable<IUserBuyerDetail>> findUserLimitFemaleLimitMale() {
+        Iterable<IUserBuyerDetail> userBuyerDetails = userService.findUserLimitFemaleLimitMale();
+        return new ResponseEntity<>(userBuyerDetails, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<User> addNew(@RequestBody UserForm userForm) {
 
