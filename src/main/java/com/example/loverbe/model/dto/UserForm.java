@@ -87,7 +87,7 @@ public class UserForm {
         user.setUsername(userForm.getUsername());
         user.setPassword(userForm.getPassword());
         user.setRoles(userForm.getRoles());
-        user.setViewCounter(userForm.getViewCounter());
+//        user.setViewCounter(userForm.getViewCounter());
         user.setRentedCounter(userForm.getRentedCounter());
         user.setStatus(userForm.getStatus());
         return user;

@@ -10,6 +10,6 @@ public interface IUserService extends IGeneralService<User>, UserDetailsService 
 
     User findByUsername(String username);
 
-    Page<User> findByName(String userName, String firstName, String viewCounter, String status, Pageable pageable);
+    Page<User> findByNameFull(String userName, String firstName, Long viewCounterMin, Long viewCounterMax, Pageable pageable);
 
 }

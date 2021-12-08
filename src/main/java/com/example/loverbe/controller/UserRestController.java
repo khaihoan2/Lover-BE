@@ -41,12 +41,14 @@ public class UserRestController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<Page<User>> search(@RequestParam(value = "username", required = false) String username,
+    public ResponseEntity<Page<User>> search(@RequestParam(name = "username", required = false) String username,
                                              @RequestParam(name = "firstName", required = false) String firstName,
-                                             @RequestParam(name = "viewCounter", required = false) String viewCounter,
-                                             @RequestParam(name = "status", required = false) String status,
+                                             @RequestParam(name = "viewCounterMin", required = false) Long viewCounterMin,
+                                             @RequestParam(name = "viewCounterMax", required = false) Long viewCounterMax,
                                              Pageable pageable) {
-        return ResponseEntity.ok(userService.findByName(username, firstName, viewCounter, status, pageable));
+        username=username.replaceAll(" ", "");
+        firstName=firstName.replaceAll(" ", "");
+        return ResponseEntity.ok(userService.findByNameFull(username, firstName, viewCounterMin, viewCounterMax, pageable));
     }
 
     @GetMapping("/{id}")

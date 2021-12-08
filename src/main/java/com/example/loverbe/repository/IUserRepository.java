@@ -10,23 +10,20 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IUserRepository extends JpaRepository<User, Long> {
-
     User findByUsername(String username);
 
     @Query("select u.firstName,u.yearOfBirth,u.gender,u.nationality.id,u.viewCounter,u.rentedCounter from User u where " +
-                "(:username is null or lower(u.username)" +
-                        " like %:username%) and " +
-                            "(:firstName is null " +
-                                "or lower(u.firstName) " +
-                                    "like %:firstName%) and" +
-                                        " (:viewCounter is null" +
-                                            " or :viewCounter like %:viewCounter%)" +
-                                                " and (:status is null " +
-                                                    "or lower(u.status) like %:status%)")
-    Page<User> findByName(@Param("username") String userName,
-                                 @Param("firstName") String firstName,
-                                 @Param("viewCounter") String viewCounter,
-                                 @Param("status") String status,
-                                 Pageable pageable);
+            "(:username is null or lower(u.username)" +
+            " like %:username%) and " +
+            "(:firstName is null " +
+            "or lower(u.firstName) " +
+            "like %:firstName%) and" +
+            " (:viewCounterMin is null or (:viewCounterMin < u.viewCounter))" +
+            " and (:viewCounterMax is null or (u.viewCounter < :viewCounterMax))")
+    Page<User> findByNameFull(@Param("username") String userName,
+                          @Param("firstName") String firstName,
+                          @Param("viewCounterMin") Long viewCounterMin,
+                          @Param("viewCounterMax") Long viewCounterMax,
+                          Pageable pageable);
 
 }

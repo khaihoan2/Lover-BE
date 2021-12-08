@@ -50,7 +50,7 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public Page<User> findByName(String userName, String firstName,String viewCounter,String status, Pageable pageable) {
-        return userRepository.findByName(userName,firstName,viewCounter,status,pageable);
+    public Page<User> findByNameFull(String userName, String firstName,Long viewCounterMin,Long viewCounterMax, Pageable pageable) {
+        return userRepository.findByNameFull(userName,firstName,viewCounterMin,viewCounterMax,pageable);
     }
 }
