@@ -37,6 +37,7 @@ public class ReservationController {
     public ResponseEntity<Reservation> findById(@PathVariable Long id) {
         Optional<Reservation> reservation = reservationService.findById(id);
         if (reservation.isPresent()) {
+
             return new ResponseEntity<>(reservation.get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -103,5 +104,6 @@ public class ReservationController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
 
 }

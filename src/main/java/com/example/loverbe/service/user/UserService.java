@@ -99,4 +99,9 @@ public class UserService implements IUserService{
         return userBuyerDetails;
     }
 
+
+    @Override
+    public Page<IUserBuyerDetail> findByNameFull(String userName, String firstName,Long viewCounterMin,Long viewCounterMax, Pageable pageable) {
+        return userRepository.findByNameFull(userName,firstName,viewCounterMin,viewCounterMax,pageable);
+    }
 }

@@ -47,4 +47,7 @@ public class Reservation {
         this.status = status;
         this.totalMoney = totalMoney;
     }
+
+
+
 }
