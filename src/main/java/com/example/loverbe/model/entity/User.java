@@ -68,4 +68,6 @@ public class User {
     private Integer rentedCounter;
 
     private String status;
+
+    private String authenticate;
 }
