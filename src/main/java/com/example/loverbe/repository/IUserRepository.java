@@ -47,4 +47,5 @@ public interface IUserRepository extends JpaRepository<User, Long> {
                           @Param("viewCounterMax") Long viewCounterMax,
                           Pageable pageable);
 
+
 }

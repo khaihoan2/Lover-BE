@@ -82,7 +82,7 @@ public class UserRestController {
     public ResponseEntity<User> addNew(@RequestBody UserForm userForm) {
 
         User user = UserForm.extract(userForm);
-        user.setViewCounter(0);
+        user.setViewCounter(0L);
         user.setRentedCounter(0);
         user.setJoinedAt(Date.valueOf(LocalDate.now()));
         user.setLastLoginAt(Date.valueOf(LocalDate.now()));
