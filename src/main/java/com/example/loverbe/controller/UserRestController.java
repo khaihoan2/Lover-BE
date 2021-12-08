@@ -78,6 +78,30 @@ public class UserRestController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
+    @GetMapping("gallery/totalElement")
+    public ResponseEntity<Long> getTotalElementDescJoinedAt() {
+        Long totalElement = userService.getTotalEntityDescJoinedAt();
+        return new ResponseEntity<>(totalElement, HttpStatus.OK);
+    }
+
+    @GetMapping("rating")
+    public ResponseEntity<Iterable<IUserBuyerDetail>> findUserHighestRanking() {
+        Iterable<IUserBuyerDetail> userBuyerDetails = userService.findUserHighestRanking();
+        return new ResponseEntity<>(userBuyerDetails, HttpStatus.OK);
+    }
+
+    @GetMapping("ratingLimitFemaleLimitMale")
+    public ResponseEntity<Iterable<IUserBuyerDetail>> findUserLimitFemaleLimitMale() {
+        Iterable<IUserBuyerDetail> userBuyerDetails = userService.findUserLimitFemaleLimitMale();
+        return new ResponseEntity<>(userBuyerDetails, HttpStatus.OK);
+    }
+
+    @GetMapping("suitableProposal")
+    public ResponseEntity<Iterable<IUserBuyerDetail>> getUserSuitable() {
+        Iterable<IUserBuyerDetail> userBuyerDetails = userService.findUserSuitable();
+        return new ResponseEntity<>(userBuyerDetails, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<User> addNew(@RequestBody UserForm userForm) {
 
