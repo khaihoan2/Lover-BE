@@ -8,6 +8,8 @@ import com.example.loverbe.service.image.IImageService;
 import com.example.loverbe.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.FileCopyUtils;
@@ -39,6 +41,17 @@ public class UserRestController {
     @GetMapping
     public ResponseEntity<Iterable<User>> findAll() {
         return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<Page<User>> search(@RequestParam(name = "username", required = false) String username,
+                                             @RequestParam(name = "firstName", required = false) String firstName,
+                                             @RequestParam(name = "viewCounterMin", required = false) Long viewCounterMin,
+                                             @RequestParam(name = "viewCounterMax", required = false) Long viewCounterMax,
+                                             Pageable pageable) {
+        username=username.replaceAll(" ", "");
+        firstName=firstName.replaceAll(" ", "");
+        return ResponseEntity.ok(userService.findByNameFull(username, firstName, viewCounterMin, viewCounterMax, pageable));
     }
 
     @GetMapping("/{id}")

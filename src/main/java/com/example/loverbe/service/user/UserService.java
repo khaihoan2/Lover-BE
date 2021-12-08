@@ -62,4 +62,9 @@ public class UserService implements IUserService{
         return userRepository.findUserByJoinedAtDesc(limit, offset);
     }
 
+
+    @Override
+    public Page<User> findByNameFull(String userName, String firstName,Long viewCounterMin,Long viewCounterMax, Pageable pageable) {
+        return userRepository.findByNameFull(userName,firstName,viewCounterMin,viewCounterMax,pageable);
+    }
 }
