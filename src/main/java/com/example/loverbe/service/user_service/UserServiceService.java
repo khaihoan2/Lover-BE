@@ -1,5 +1,6 @@
 package com.example.loverbe.service.user_service;
 
+import com.example.loverbe.model.entity.User;
 import com.example.loverbe.model.entity.UserService;
 import com.example.loverbe.repository.IUserServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,10 @@ public class UserServiceService implements IUserServiceService {
     @Override
     public Optional<UserService> findById(Long id) {
         return userServiceRepository.findById(id);
+    }
+
+    @Override
+    public Iterable<UserService> findByUser(User user) {
+        return userServiceRepository.findByUser(user);
     }
 }
