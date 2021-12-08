@@ -15,4 +15,13 @@ public interface IUserService extends IGeneralService<User>, UserDetailsService 
 
     Iterable<IUserBuyerDetail> findUserByJoinedAtDesc(Long page);
 
+    Iterable<IUserBuyerDetail> findUserHighestRanking();
+
+    Iterable<IUserBuyerDetail> findUserLimitFemaleLimitMale();
+
+    Long getTotalEntityDescJoinedAt();
+
+
+    Iterable<IUserBuyerDetail> findUserSuitable();
+
 }
