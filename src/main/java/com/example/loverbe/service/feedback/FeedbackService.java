@@ -5,6 +5,7 @@ import com.example.loverbe.repository.IFeedbackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.Optional;
 @Service
 public class FeedbackService implements IFeedbackService{
@@ -19,6 +20,8 @@ public class FeedbackService implements IFeedbackService{
 
     @Override
     public Feedback save(Feedback feedback) {
+        Date date = new Date(System.currentTimeMillis());
+        feedback.setSentAt(date);
         return feedbackRepository.save(feedback);
     }
 
@@ -30,5 +33,10 @@ public class FeedbackService implements IFeedbackService{
     @Override
     public Optional<Feedback> findById(Long id) {
         return feedbackRepository.findById(id);
+    }
+
+    @Override
+    public Optional<Feedback> findByReservationId(Long id) {
+        return feedbackRepository.findByReservationId(id);
     }
 }
