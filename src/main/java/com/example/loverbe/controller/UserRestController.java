@@ -156,7 +156,12 @@ public class UserRestController {
         if (!userOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        User user = UserForm.extract(userForm);
+        User user = userOptional.get();
+        user.setFirstName(userForm.getFirstName());
+        user.setLastName(userForm.getLastName());
+        user.setEmail(userForm.getEmail());
+        user.setPhone(userForm.getPhone());
+        user.setDescription(userForm.getDescription());
         MultipartFile avatar = userForm.getAvatar();
         if (avatar != null) {
             String avatarFileName = avatar.getOriginalFilename();
