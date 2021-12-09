@@ -150,6 +150,28 @@ public class UserRestController {
         return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
     }
 
+    @PutMapping("user/{id}")
+    public ResponseEntity<User> editUser(UserForm userForm, @PathVariable Long id) {
+        Optional<User> userOptional = userService.findById(id);
+        if (!userOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        User user = UserForm.extract(userForm);
+        MultipartFile avatar = userForm.getAvatar();
+        if (avatar != null) {
+            String avatarFileName = avatar.getOriginalFilename();
+            user.setAvatar(avatarFileName);
+            try {
+                FileCopyUtils.copy(avatar.getBytes(), new File(fileUpload + avatarFileName));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        user.setId(id);
+        return new ResponseEntity<>(userService.save(user), HttpStatus.OK);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<User> update(@RequestBody UserForm userForm,
                                        @PathVariable Long id) {
