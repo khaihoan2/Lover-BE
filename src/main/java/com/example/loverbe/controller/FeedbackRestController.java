@@ -30,6 +30,15 @@ public class FeedbackRestController {
         return ResponseEntity.ok(feedbackOptional.get());
     }
 
+    @GetMapping("reservation/{id}")
+    public ResponseEntity<Feedback> findByReservationId(@PathVariable Long id) {
+        Optional<Feedback> feedback = feedbackService.findByReservationId(id);
+        if (feedback.isPresent()) {
+            return new ResponseEntity<>(feedback.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<Feedback> addFeedback(@RequestBody Feedback feedback) {
         return new ResponseEntity<>(feedbackService.save(feedback), HttpStatus.CREATED);

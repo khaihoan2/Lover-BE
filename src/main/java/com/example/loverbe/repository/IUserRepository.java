@@ -117,7 +117,20 @@ public interface IUserRepository extends JpaRepository<User, Long> {
             "limit ?2 offset 0", nativeQuery = true)
     Iterable<IUserBuyerDetail> findUserSuitable(String genderName, Long limit);
 
-    @Query("select u.firstName,u.yearOfBirth,u.gender,u.nationality.id,u.viewCounter,u.rentedCounter from User u where " +
+    @Query("select " +
+            "u.id as id," +
+            "u.firstName as firstName," +
+            "u.lastName as lastName," +
+            "u.height as height," +
+            "u.weight as weight," +
+            "u.bust as bust," +
+            "u.yearOfBirth as yearOfBirth," +
+            "u.waist as waist," +
+            "u.hips as hips," +
+            "u.avatar as avatar," +
+            "u.joinedAt as joinedAt," +
+            "u.rentedCounter as rentedCounter " +
+            "from User u where " +
             "(:username is null or lower(u.username)" +
             " like %:username%) and " +
             "(:firstName is null " +
@@ -125,7 +138,7 @@ public interface IUserRepository extends JpaRepository<User, Long> {
             "like %:firstName%) and" +
             " (:viewCounterMin is null or (:viewCounterMin < u.viewCounter))" +
             " and (:viewCounterMax is null or (u.viewCounter < :viewCounterMax))")
-    Page<User> findByNameFull(@Param("username") String userName,
+    Page<IUserBuyerDetail> findByNameFull(@Param("username") String userName,
                           @Param("firstName") String firstName,
                           @Param("viewCounterMin") Long viewCounterMin,
                           @Param("viewCounterMax") Long viewCounterMax,

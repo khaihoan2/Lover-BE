@@ -24,6 +24,6 @@ public interface IUserService extends IGeneralService<User>, UserDetailsService 
 
     Iterable<IUserBuyerDetail> findUserSuitable();
 
-    Page<User> findByNameFull(String userName, String firstName, Long viewCounterMin, Long viewCounterMax, Pageable pageable);
+    Page<IUserBuyerDetail> findByNameFull(String userName, String firstName, Long viewCounterMin, Long viewCounterMax, Pageable pageable);
 
 }

@@ -54,11 +54,17 @@ public class UserRestController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<Page<User>> search(@RequestParam(name = "username", required = false) String username,
+    public ResponseEntity<Page<IUserBuyerDetail>> search(@RequestParam(name = "username", required = false) String username,
                                              @RequestParam(name = "firstName", required = false) String firstName,
                                              @RequestParam(name = "viewCounterMin", required = false) Long viewCounterMin,
                                              @RequestParam(name = "viewCounterMax", required = false) Long viewCounterMax,
                                              Pageable pageable) {
+        if (username == null) {
+            username = "";
+        }
+        if (firstName == null) {
+            firstName = "";
+        }
         username=username.replaceAll(" ", "");
         firstName=firstName.replaceAll(" ", "");
         return ResponseEntity.ok(userService.findByNameFull(username, firstName, viewCounterMin, viewCounterMax, pageable));
@@ -88,12 +94,6 @@ public class UserRestController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @GetMapping("gallery/totalElement")
-    public ResponseEntity<Long> getTotalElementDescJoinedAt() {
-        Long totalElement = userService.getTotalEntityDescJoinedAt();
-        return new ResponseEntity<>(totalElement, HttpStatus.OK);
-    }
-
     @GetMapping("rating")
     public ResponseEntity<Iterable<IUserBuyerDetail>> findUserHighestRanking() {
         Iterable<IUserBuyerDetail> userBuyerDetails = userService.findUserHighestRanking();
@@ -104,6 +104,12 @@ public class UserRestController {
     public ResponseEntity<Iterable<IUserBuyerDetail>> findUserLimitFemaleLimitMale() {
         Iterable<IUserBuyerDetail> userBuyerDetails = userService.findUserLimitFemaleLimitMale();
         return new ResponseEntity<>(userBuyerDetails, HttpStatus.OK);
+    }
+
+    @GetMapping("gallery/totalElement")
+    public ResponseEntity<Long> getTotalElementDescJoinedAt() {
+        Long totalElement = userService.getTotalEntityDescJoinedAt();
+        return new ResponseEntity<>(totalElement, HttpStatus.OK);
     }
 
     @GetMapping("suitableProposal")

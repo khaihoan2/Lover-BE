@@ -22,4 +22,6 @@ public interface IUserBuyerDetail {
     String getAvatar();
 
     String getJoinedAt();
+
+    Integer getRentedCounter();
 }
