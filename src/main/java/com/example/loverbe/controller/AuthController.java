@@ -62,6 +62,7 @@ public class AuthController {
             roles.add(new Role(3L, RoleName.ROLE_BUYER));
             user.setRoles(roles);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setStatus("User");
             userService.save(user);
             return new ResponseEntity<>(user, HttpStatus.OK);
         }
