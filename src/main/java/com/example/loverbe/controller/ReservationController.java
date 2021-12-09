@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -31,12 +30,14 @@ public class ReservationController {
     @Autowired
     private IReservationDetailService reservationDetailService;
 
+
+
     @GetMapping
     public ResponseEntity<Iterable<Reservation>> findAll() {
         return new ResponseEntity<>(reservationService.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/view/{id}")
     public ResponseEntity<Reservation> findById(@PathVariable Long id) {
         Optional<Reservation> reservation = reservationService.findById(id);
         if (reservation.isPresent()) {
@@ -106,5 +107,4 @@ public class ReservationController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
 }
