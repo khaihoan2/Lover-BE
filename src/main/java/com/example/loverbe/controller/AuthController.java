@@ -41,17 +41,22 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody User user) {
         if (user.getUsername() == null || user.getPassword() == null ||
-            user.getUsername().equals("") || user.getPassword().equals("")) {
+                user.getUsername().equals("") || user.getPassword().equals("")) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Authentication authentication =
-                authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+                authenticationManager.authenticate(
+                        new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
+                );
         SecurityContextHolder.getContext().setAuthentication(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String username = userDetails.getUsername();
         String token = jwtService.createTokenLogin(authentication);
-        User user1 = userService.findByUsername(username);
-        return new ResponseEntity<>(new JwtResponse(user1.getId(), username, token, userDetails.getAuthorities()), HttpStatus.OK);
+        User loggedUser = userService.findByUsername(username);
+        return new ResponseEntity<>(
+                new JwtResponse(loggedUser.getId(), username, token, userDetails.getAuthorities()),
+                HttpStatus.OK
+        );
     }
 
     @PostMapping("/register")

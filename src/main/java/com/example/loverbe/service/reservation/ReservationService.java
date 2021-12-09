@@ -38,4 +38,9 @@ public class ReservationService implements IReservationService {
     public Iterable<Reservation> findByRenter(User user) {
         return reservationRepository.findByRenter(user);
     }
+
+    @Override
+    public Iterable<Reservation> findByRentee(User user) {
+        return reservationRepository.findByRentee(user);
+    }
 }

@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface IReservationRepository extends JpaRepository<Reservation, Long> {
 
     Iterable<Reservation> findByRenter(User user);
+
+    Iterable<Reservation> findByRentee(User user);
 }
