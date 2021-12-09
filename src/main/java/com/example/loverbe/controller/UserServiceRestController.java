@@ -2,12 +2,16 @@ package com.example.loverbe.controller;
 
 import com.example.loverbe.model.entity.User;
 import com.example.loverbe.model.entity.UserService;
+import com.example.loverbe.service.user.IUserService;
 import com.example.loverbe.service.user_service.IUserServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -18,9 +22,21 @@ public class UserServiceRestController {
     @Autowired
     private IUserServiceService userServiceService;
 
+    @Autowired
+    private IUserService userService;
+
+//    @GetMapping
+//    public ResponseEntity<Iterable<UserService>> findAll() {
+//        return new ResponseEntity<>(userServiceService.findAll(), HttpStatus.OK);
+//    }
+
     @GetMapping
-    public ResponseEntity<Iterable<UserService>> findAll() {
-        return new ResponseEntity<>(userServiceService.findAll(), HttpStatus.OK);
+    public ResponseEntity<Iterable<UserService>> findBySeller(@RequestParam Long sellerId) {
+        Optional<User> userOptional = userService.findById(sellerId);
+        if (!userOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(userServiceService.findByUser(userOptional.get()), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -42,8 +58,12 @@ public class UserServiceRestController {
     }
 
     @PostMapping
-    public ResponseEntity<UserService> addNew(@RequestBody UserService userService) {
-        return new ResponseEntity<>(userServiceService.save(userService), HttpStatus.CREATED);
+    public ResponseEntity<List<UserService>> addNew(@RequestBody List<UserService> userServices) {
+        List<UserService> userServiceIterableResult = new ArrayList<>();
+        for (UserService userService : userServices) {
+            userServiceIterableResult.add(userServiceService.save(userService));
+        }
+        return new ResponseEntity<>(userServiceIterableResult, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

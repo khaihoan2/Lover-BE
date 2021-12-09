@@ -8,4 +8,6 @@ public interface IReservationService extends IGeneralService<Reservation> {
 
     Iterable<Reservation> findByRenter(User user);
 
+    Iterable<Reservation> findByRentee(User user);
+
 }

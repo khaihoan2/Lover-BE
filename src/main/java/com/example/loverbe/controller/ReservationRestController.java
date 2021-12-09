@@ -17,10 +17,10 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/api/reservations")
 @CrossOrigin("*")
-public class ReservationController {
+public class ReservationRestController {
 
     @Autowired
     private IReservationService reservationService;
@@ -29,8 +29,12 @@ public class ReservationController {
     private IReservationDetailService reservationDetailService;
 
     @GetMapping
-    public ResponseEntity<Iterable<Reservation>> findAll() {
-        return new ResponseEntity<>(reservationService.findAll(), HttpStatus.OK);
+    public ResponseEntity<Iterable<Reservation>> findAll(@RequestBody(required = false) User user) {
+        if (user == null) {
+            return new ResponseEntity<>(reservationService.findAll(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(reservationService.findByRentee(user), HttpStatus.OK);
+        }
     }
 
     @GetMapping("{id}")

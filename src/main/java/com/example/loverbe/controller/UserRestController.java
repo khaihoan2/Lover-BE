@@ -2,10 +2,14 @@ package com.example.loverbe.controller;
 
 import com.example.loverbe.model.entity.Image;
 import com.example.loverbe.model.IUserBuyerDetail;
+import com.example.loverbe.model.entity.Service;
 import com.example.loverbe.model.entity.User;
 import com.example.loverbe.model.dto.UserForm;
+import com.example.loverbe.model.entity.UserService;
 import com.example.loverbe.service.image.IImageService;
+import com.example.loverbe.service.service.IServiceService;
 import com.example.loverbe.service.user.IUserService;
+import com.example.loverbe.service.user_service.IUserServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -31,6 +35,12 @@ public class UserRestController {
 
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private IServiceService serviceService;
+
+    @Autowired
+    private IUserServiceService userServiceService;
 
     @Autowired
     private IImageService imageService;
