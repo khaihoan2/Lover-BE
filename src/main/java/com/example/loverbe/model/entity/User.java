@@ -63,9 +63,11 @@ public class User {
     )
     private Set<Role> roles;
 
-    private Integer viewCounter;
+    private Long viewCounter;
 
     private Integer rentedCounter;
 
     private String status;
+
+    private String authenticate;
 }
