@@ -150,6 +150,18 @@ public class UserRestController {
         return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
     }
 
+    @PutMapping("user/pending/{id}")
+    public ResponseEntity<User> editUser(@PathVariable Long id, @RequestBody User user) {
+        Optional<User> userOptional = userService.findById(id);
+        if (!userOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        User user1 = userOptional.get();
+        user1.setId(id);
+        user1.setStatus(user.getStatus());
+        return new ResponseEntity<>(userService.save(user1), HttpStatus.OK);
+    }
+
     @PutMapping("user/{id}")
     public ResponseEntity<User> editUser(UserForm userForm, @PathVariable Long id) {
         Optional<User> userOptional = userService.findById(id);
