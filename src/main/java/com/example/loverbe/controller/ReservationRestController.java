@@ -4,12 +4,18 @@ import com.example.loverbe.model.dto.ReservationForm;
 import com.example.loverbe.model.entity.Reservation;
 import com.example.loverbe.model.entity.ReservationDetail;
 import com.example.loverbe.model.entity.User;
+import com.example.loverbe.model.string_constant.ReservationStatus;
 import com.example.loverbe.service.reservation.IReservationService;
 import com.example.loverbe.service.reservationDetail.IReservationDetailService;
+import com.example.loverbe.service.user.IUserService;
 import com.example.loverbe.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
@@ -30,6 +36,9 @@ public class ReservationRestController {
 
     @Autowired
     private IReservationDetailService reservationDetailService;
+
+    @Autowired
+    private IUserService userService;
 
     @GetMapping
     public ResponseEntity<Iterable<Reservation>> findAll(@RequestParam(required = false) Long sellerId) {
@@ -53,10 +62,10 @@ public class ReservationRestController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/cart/{id}")
-    public ResponseEntity<Iterable<Reservation>> findByRenter(@PathVariable Long id) {
-        User user = new User();
-        user.setId(id);
+    @GetMapping("/cart")
+    public ResponseEntity<Iterable<Reservation>> findByRenter() {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.findByUsername(userDetails.getUsername());
         Iterable<Reservation> reservations = reservationService.findByRenter(user);
         return new ResponseEntity<>(reservations, HttpStatus.OK);
     }
@@ -78,6 +87,7 @@ public class ReservationRestController {
         Timestamp endAt = new Timestamp(date.getYear(), date.getMonth(), date.getDay(), endAtHour, endAtMinute, 0, 0);
         reservation.setEndAt(endAt);
         reservation.setReserveAt(new Timestamp(System.currentTimeMillis()));
+        reservation.setStatus(ReservationStatus.PENDING);
         Reservation reservationSave = reservationService.save(reservation);
 
         List<ReservationDetail> reservationDetails = reservationForm.getReservationDetails();
@@ -88,7 +98,7 @@ public class ReservationRestController {
         return new ResponseEntity<>(reservationSave, HttpStatus.OK);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Reservation> edit(@PathVariable Long id, @RequestBody Reservation reservation) {
         Optional<Reservation> optionalReservation = reservationService.findById(id);
         if (optionalReservation.isPresent()) {
@@ -105,7 +115,7 @@ public class ReservationRestController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Reservation> delete(@PathVariable Long id) {
         Optional<Reservation> reservation = reservationService.findById(id);
         if (reservation.isPresent()) {

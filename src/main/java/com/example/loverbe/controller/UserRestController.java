@@ -55,18 +55,18 @@ public class UserRestController {
 
     @GetMapping("/search")
     public ResponseEntity<Page<IUserBuyerDetail>> search(@RequestParam(name = "username", required = false) String username,
-                                                         @RequestParam(name = "firstName", required = false) String firstName,
-                                                         @RequestParam(name = "viewCounterMin", required = false) Long viewCounterMin,
-                                                         @RequestParam(name = "viewCounterMax", required = false) Long viewCounterMax,
-                                                         Pageable pageable) {
+                                             @RequestParam(name = "firstName", required = false) String firstName,
+                                             @RequestParam(name = "viewCounterMin", required = false) Long viewCounterMin,
+                                             @RequestParam(name = "viewCounterMax", required = false) Long viewCounterMax,
+                                             Pageable pageable) {
         if (username == null) {
             username = "";
         }
         if (firstName == null) {
             firstName = "";
         }
-        username = username.replaceAll(" ", "");
-        firstName = firstName.replaceAll(" ", "");
+        username=username.replaceAll(" ", "");
+        firstName=firstName.replaceAll(" ", "");
         return ResponseEntity.ok(userService.findByNameFull(username, firstName, viewCounterMin, viewCounterMax, pageable));
     }
 
@@ -150,53 +150,82 @@ public class UserRestController {
         return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<User> update(@RequestBody UserForm userForm,
-//                                       @PathVariable Long id) {
-//        Optional<User> userOptional = userService.findById(id);
-//        if (!userOptional.isPresent()) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//
-//        User user = UserForm.extract(userForm);
-//
-//        // save the avatar into database and static folder
-//        MultipartFile avatar = userForm.getAvatar();
-//        if (avatar != null) {
-//            String avatarFileName = avatar.getOriginalFilename();
-//            user.setAvatar(avatarFileName);
-//            try {
-//                FileCopyUtils.copy(avatar.getBytes(), new File(fileUpload + avatarFileName));
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        // save other images into database and static folder
-//        Set<MultipartFile> images = userForm.getImages();
-//        if (images != null) {
-//            for (MultipartFile image : images) {
-//                String imageFileName = image.getOriginalFilename();
-//                try {
-//                    FileCopyUtils.copy(image.getBytes(), new File(fileUpload + imageFileName));
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//                imageService.save(new Image(imageFileName, user));
-//            }
-//        }
-//
-//        user.setId(id);
-//        return new ResponseEntity<>(userService.save(user), HttpStatus.OK);
-//    }
+    @PutMapping("user/pending/{id}")
+    public ResponseEntity<User> editUser(@PathVariable Long id, @RequestBody User user) {
+        Optional<User> userOptional = userService.findById(id);
+        if (!userOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        User user1 = userOptional.get();
+        user1.setId(id);
+        user1.setStatus(user.getStatus());
+        return new ResponseEntity<>(userService.save(user1), HttpStatus.OK);
+    }
+
+    @PutMapping("user/{id}")
+    public ResponseEntity<User> editUser(UserForm userForm, @PathVariable Long id) {
+        Optional<User> userOptional = userService.findById(id);
+        if (!userOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        User user = userOptional.get();
+        user.setFirstName(userForm.getFirstName());
+        user.setLastName(userForm.getLastName());
+        user.setEmail(userForm.getEmail());
+        user.setPhone(userForm.getPhone());
+        user.setDescription(userForm.getDescription());
+        MultipartFile avatar = userForm.getAvatar();
+        if (avatar != null) {
+            String avatarFileName = avatar.getOriginalFilename();
+            user.setAvatar(avatarFileName);
+            try {
+                FileCopyUtils.copy(avatar.getBytes(), new File(fileUpload + avatarFileName));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        user.setId(id);
+        return new ResponseEntity<>(userService.save(user), HttpStatus.OK);
+    }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> update(@RequestBody User user,
+    public ResponseEntity<User> update(@RequestBody UserForm userForm,
                                        @PathVariable Long id) {
         Optional<User> userOptional = userService.findById(id);
         if (!userOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
+        User user = UserForm.extract(userForm);
+
+        // save the avatar into database and static folder
+        MultipartFile avatar = userForm.getAvatar();
+        if (avatar != null) {
+            String avatarFileName = avatar.getOriginalFilename();
+            user.setAvatar(avatarFileName);
+            try {
+                FileCopyUtils.copy(avatar.getBytes(), new File(fileUpload + avatarFileName));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // save other images into database and static folder
+        Set<MultipartFile> images = userForm.getImages();
+        if (images != null) {
+            for (MultipartFile image : images) {
+                String imageFileName = image.getOriginalFilename();
+                try {
+                    FileCopyUtils.copy(image.getBytes(), new File(fileUpload + imageFileName));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                imageService.save(new Image(imageFileName, user));
+            }
+        }
+
+        user.setId(id);
         return new ResponseEntity<>(userService.save(user), HttpStatus.OK);
     }
 

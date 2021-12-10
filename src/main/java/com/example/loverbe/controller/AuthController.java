@@ -4,6 +4,8 @@ import com.example.loverbe.model.JwtResponse;
 import com.example.loverbe.model.entity.Role;
 import com.example.loverbe.model.entity.User;
 import com.example.loverbe.model.string_constant.RoleName;
+import com.example.loverbe.model.string_constant.UserAuthenticate;
+import com.example.loverbe.model.string_constant.UserStatus;
 import com.example.loverbe.service.jwt.JwtService;
 import com.example.loverbe.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -66,7 +69,11 @@ public class AuthController {
             Set<Role> roles = new HashSet<>();
             roles.add(new Role(3L, RoleName.ROLE_BUYER));
             user.setRoles(roles);
+            user.setStatus(UserStatus.USER);
+            user.setAuthenticate(UserAuthenticate.NORMAL);
+            user.setJoinedAt(new Date(System.currentTimeMillis()));
             user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setStatus("User");
             userService.save(user);
             return new ResponseEntity<>(user, HttpStatus.OK);
         }
