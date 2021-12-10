@@ -6,10 +6,10 @@ import com.example.loverbe.model.entity.ReservationDetail;
 import com.example.loverbe.model.entity.User;
 import com.example.loverbe.service.reservation.IReservationService;
 import com.example.loverbe.service.reservationDetail.IReservationDetailService;
+import com.example.loverbe.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
@@ -23,25 +23,31 @@ import java.util.Optional;
 public class ReservationRestController {
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private IReservationService reservationService;
 
     @Autowired
     private IReservationDetailService reservationDetailService;
 
     @GetMapping
-    public ResponseEntity<Iterable<Reservation>> findAll(@RequestBody(required = false) User user) {
-        if (user == null) {
+    public ResponseEntity<Iterable<Reservation>> findAll(@RequestParam(required = false) Long sellerId) {
+        if (sellerId == null) {
             return new ResponseEntity<>(reservationService.findAll(), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(reservationService.findByRentee(user), HttpStatus.OK);
+            Optional<User> userOptional = userService.findById(sellerId);
+            if (!userOptional.isPresent()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<>(reservationService.findByRentee(userOptional.get()), HttpStatus.OK);
         }
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Reservation> findById(@PathVariable Long id) {
         Optional<Reservation> reservation = reservationService.findById(id);
         if (reservation.isPresent()) {
-
             return new ResponseEntity<>(reservation.get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);

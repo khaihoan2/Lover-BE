@@ -15,9 +15,9 @@ import java.util.Optional;
 @RequestMapping("/api/images")
 @CrossOrigin("*")
 public class ImageRestController {
+
     @Autowired
     private IImageService imageService;
-
 
     @GetMapping
     public ResponseEntity<Iterable<Image>> getAllImage() {
@@ -57,7 +57,6 @@ public class ImageRestController {
             return new ResponseEntity<>(imageService.save(image), HttpStatus.OK);
         }
     }
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Image> deleteImage(@PathVariable Long id) {

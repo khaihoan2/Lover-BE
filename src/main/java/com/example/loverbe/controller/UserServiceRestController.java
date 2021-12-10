@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,11 +23,6 @@ public class UserServiceRestController {
 
     @Autowired
     private IUserService userService;
-
-//    @GetMapping
-//    public ResponseEntity<Iterable<UserService>> findAll() {
-//        return new ResponseEntity<>(userServiceService.findAll(), HttpStatus.OK);
-//    }
 
     @GetMapping
     public ResponseEntity<Iterable<UserService>> findBySeller(@RequestParam Long sellerId) {
@@ -59,9 +53,14 @@ public class UserServiceRestController {
 
     @PostMapping
     public ResponseEntity<List<UserService>> addNew(@RequestBody List<UserService> userServices) {
+        User user = userServices.get(0).getUser();
+        Iterable<UserService> oldUserServices = userServiceService.findByUser(user);
+        for (UserService oldUserService : oldUserServices) {
+            userServiceService.delete(oldUserService.getId());
+        }
         List<UserService> userServiceIterableResult = new ArrayList<>();
-        for (UserService userService : userServices) {
-            userServiceIterableResult.add(userServiceService.save(userService));
+        for (UserService newUserService : userServices) {
+            userServiceIterableResult.add(userServiceService.save(newUserService));
         }
         return new ResponseEntity<>(userServiceIterableResult, HttpStatus.CREATED);
     }
